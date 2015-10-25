@@ -1,0 +1,6 @@
+package igoodie.igoodiesfarm.client.models;
+
+public class ModelCrossCrop 
+{
+
+}

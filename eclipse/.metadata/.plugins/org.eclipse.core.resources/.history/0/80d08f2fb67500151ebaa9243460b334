@@ -1,0 +1,27 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  cpw.mods.fml.common.network.NetworkRegistry
+ *  cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper
+ *  cpw.mods.fml.relauncher.Side
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.MessageMarketBrowse;
+import com.pam.harvestcraft.MessageMarketBuy;
+import com.pam.harvestcraft.MessageMarketClosed;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
+
+public class PacketHandler {
+    public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("harvestcraft");
+
+    public static void init() {
+        INSTANCE.registerMessage((Class)MessageMarketBrowse.class, (Class)MessageMarketBrowse.class, 0, Side.SERVER);
+        INSTANCE.registerMessage((Class)MessageMarketBuy.class, (Class)MessageMarketBuy.class, 1, Side.SERVER);
+        INSTANCE.registerMessage((Class)MessageMarketClosed.class, (Class)MessageMarketClosed.class, 2, Side.SERVER);
+    }
+}
+

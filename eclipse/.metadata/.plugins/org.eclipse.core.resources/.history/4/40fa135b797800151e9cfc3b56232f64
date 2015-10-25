@@ -1,0 +1,25 @@
+package igoodie.igoodiesfarm.blocks;
+
+import igoodie.igoodiesfarm.tabs.GoodiesFarmTab;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.material.Material;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+
+public class BlockPole extends BlockContainer
+{
+	public BlockPole()
+	{
+		super(Material.rock);
+		this.setHardness(2.0F);
+		this.setResistance(5.0F);
+		this.setCreativeTab(GoodiesFarmTab.instance);
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

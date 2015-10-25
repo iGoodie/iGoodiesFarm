@@ -1,0 +1,23 @@
+package igoodie.igoodiesfarm.blocks;
+
+import igoodie.igoodiesfarm.entities.TileEntityBlackberryBush;
+import igoodie.igoodiesfarm.entities.TileEntityBlueberryBush;
+import cpw.mods.fml.common.registry.GameRegistry;
+
+public class GoodiesFarmBlocks 
+{
+	public static BlockBlackberryBush blockBlackberryBush = new BlockBlackberryBush();
+	public static BlockBlueberryBush blockBlueberryBush = new BlockBlueberryBush();
+	
+	public static void init()
+	{
+		//Register Blocks
+		GameRegistry.registerBlock(blockBlackberryBush, "blockBlackberryBush");
+		GameRegistry.registerBlock(blockBlueberryBush, "blockBlueberryBush");
+		
+		
+		//Register TileEntities
+		GameRegistry.registerTileEntity(TileEntityBlackberryBush.class, "igoodiesfarm:TileEntityBlackberryBush");
+		GameRegistry.registerTileEntity(TileEntityBlueberryBush.class, "igoodiesfarm:TileEntityBlueberryBush");
+	}
+}

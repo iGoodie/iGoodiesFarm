@@ -1,0 +1,22 @@
+package igoodie.goodiesfarm.items;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
+public class GoodiesFarmItems 
+{
+	public static ItemRawMutton itemRawMutton = new ItemRawMutton();
+	public static ItemCookedMutton itemCookedMutton = new ItemCookedMutton();
+	
+	private static void initRecipes()
+	{
+		
+	}
+	
+	public static void init()
+	{
+		GameRegistry.registerItem(itemRawMutton, "itemRawMutton");
+		GameRegistry.registerItem(itemCookedMutton, "itemCookedMutton");
+		
+		initRecipes();
+	}
+}

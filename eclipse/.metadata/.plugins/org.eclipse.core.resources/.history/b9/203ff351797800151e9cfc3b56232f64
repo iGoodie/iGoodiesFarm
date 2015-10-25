@@ -1,0 +1,12 @@
+package igoodie.igoodiesfarm.blocks;
+
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.material.Material;
+
+public class BlockPole extends BlockContainer
+{
+	public BlockPole()
+	{
+		super(Material.rock)
+	}
+}

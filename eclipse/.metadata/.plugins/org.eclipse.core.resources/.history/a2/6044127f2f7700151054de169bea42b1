@@ -1,0 +1,16 @@
+package igoodie.igoodiesfarm.client.gui;
+
+import cpw.mods.fml.client.FMLClientHandler;
+
+public class StringWithStroke 
+{
+	public static void draw(String str)
+	{
+		FMLClientHandler.instance().getClient().fontRenderer.drawString(
+				"Saturation: " + Integer.toString((int)saturation), 
+				(width+36)/2-1,
+				height-49,
+				0,
+				false);	
+	}
+}

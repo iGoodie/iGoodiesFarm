@@ -1,0 +1,17 @@
+package igoodie.igoodiesfarm.items;
+
+import igoodie.igoodiesfarm.blocks.GoodiesFarmBlocks;
+import igoodie.igoodiesfarm.tabs.GoodiesFarmTab;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemSeeds;
+
+public class ItemTomatoSeeds extends ItemSeeds
+{
+	public ItemTomatoSeeds()
+	{
+		super(GoodiesFarmBlocks.blockTomatoCrop, Blocks.farmland);
+		this.setUnlocalizedName("itemTomatoSeeds");
+		this.setTextureName("itemTomatoSeeds");
+		this.setCreativeTab(GoodiesFarmTab.instance);
+	}
+}

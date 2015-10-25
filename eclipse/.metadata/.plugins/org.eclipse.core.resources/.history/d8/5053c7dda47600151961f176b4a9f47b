@@ -1,0 +1,5 @@
+package igoodie.igoodiesfarm.client.gui;
+
+public class GoodiesFarmGuiHandler {
+
+}

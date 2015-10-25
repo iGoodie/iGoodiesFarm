@@ -1,0 +1,12 @@
+package igoodie.igoodiesfarm.blocks;
+
+import net.minecraft.client.model.ModelBase;
+
+public class GoodiesFarmBlocks 
+{
+	public static BlockBlackberryBush blockBlackberryBush = new BlockBlackberryBush();
+	public static void init()
+	{
+		
+	}
+}

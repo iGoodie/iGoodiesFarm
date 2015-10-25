@@ -1,0 +1,120 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  net.minecraft.block.Block
+ *  net.minecraft.init.Blocks
+ *  net.minecraft.init.Items
+ *  net.minecraft.item.Item
+ *  net.minecraft.item.ItemStack
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.ItemRegistry;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+
+public class PresserRecipes {
+    private static final PresserRecipes smeltingBase = new PresserRecipes();
+    private Map smeltingList = new HashMap();
+    private Map experienceList = new HashMap();
+    private static final String __OBFID = "CL_00000085";
+
+    public static PresserRecipes smelting() {
+        return smeltingBase;
+    }
+
+    private PresserRecipes() {
+        this.func_151396_a(ItemRegistry.waxcombItem, new ItemStack(ItemRegistry.beeswaxItem), 0.0f);
+        this.func_151396_a(Items.field_151120_aE, new ItemStack(Items.field_151102_aT), 0.0f);
+        this.func_151393_a(Blocks.field_150364_r, new ItemStack(Items.field_151121_aF), 0.0f);
+        this.func_151396_a(ItemRegistry.honeycombItem, new ItemStack(ItemRegistry.honeyItem), 0.0f);
+        this.func_151396_a(Items.field_151034_e, new ItemStack(ItemRegistry.applejuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.blackberryItem, new ItemStack(ItemRegistry.blackberryjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.blueberryItem, new ItemStack(ItemRegistry.blueberryjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.cactusfruitItem, new ItemStack(ItemRegistry.cactusfruitjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.cherryItem, new ItemStack(ItemRegistry.cherryjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.cranberryItem, new ItemStack(ItemRegistry.cranberryjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.grapeItem, new ItemStack(ItemRegistry.grapejuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.kiwiItem, new ItemStack(ItemRegistry.kiwijuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.limeItem, new ItemStack(ItemRegistry.limejuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.mangoItem, new ItemStack(ItemRegistry.mangojuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.oliveItem, new ItemStack(ItemRegistry.oliveoilItem), 0.0f);
+        this.func_151396_a(ItemRegistry.sunflowerseedsItem, new ItemStack(ItemRegistry.oliveoilItem), 0.0f);
+        this.func_151396_a(ItemRegistry.walnutItem, new ItemStack(ItemRegistry.oliveoilItem), 0.0f);
+        this.func_151396_a(ItemRegistry.orangeItem, new ItemStack(ItemRegistry.orangejuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.papayaItem, new ItemStack(ItemRegistry.papayajuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.peachItem, new ItemStack(ItemRegistry.peachjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.pomegranateItem, new ItemStack(ItemRegistry.pomegranatejuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.starfruitItem, new ItemStack(ItemRegistry.starfruitjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.strawberryItem, new ItemStack(ItemRegistry.strawberryjuiceItem), 0.0f);
+        this.func_151396_a(Items.field_151120_aE, new ItemStack(Items.field_151102_aT), 0.0f);
+        this.func_151396_a(ItemRegistry.beetItem, new ItemStack(Items.field_151102_aT), 0.0f);
+        this.func_151393_a(Blocks.field_150364_r, new ItemStack(Items.field_151121_aF), 0.0f);
+        this.func_151396_a(ItemRegistry.freshwaterItem, new ItemStack(ItemRegistry.bubblywaterItem), 0.0f);
+        this.func_151396_a(ItemRegistry.soybeanItem, new ItemStack(ItemRegistry.soymilkItem), 0.0f);
+        this.func_151396_a(ItemRegistry.soymilkItem, new ItemStack(ItemRegistry.silkentofuItem), 0.0f);
+        this.func_151396_a(ItemRegistry.silkentofuItem, new ItemStack(ItemRegistry.firmtofuItem), 0.0f);
+        this.func_151396_a(ItemRegistry.plumItem, new ItemStack(ItemRegistry.plumjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.pearItem, new ItemStack(ItemRegistry.pearjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.apricotItem, new ItemStack(ItemRegistry.apricotjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.figItem, new ItemStack(ItemRegistry.figjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.grapefruitItem, new ItemStack(ItemRegistry.grapefruitjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.persimmonItem, new ItemStack(ItemRegistry.persimmonjuiceItem), 0.0f);
+        this.func_151396_a(ItemRegistry.almondItem, new ItemStack(ItemRegistry.freshmilkItem), 0.0f);
+        this.func_151396_a(ItemRegistry.sesameseedsItem, new ItemStack(ItemRegistry.oliveoilItem), 0.0f);
+    }
+
+    public void func_151393_a(Block p_151393_1_, ItemStack p_151393_2_, float p_151393_3_) {
+        this.func_151396_a(Item.func_150898_a((Block)p_151393_1_), p_151393_2_, p_151393_3_);
+    }
+
+    public void func_151396_a(Item p_151396_1_, ItemStack p_151396_2_, float p_151396_3_) {
+        this.func_151394_a(new ItemStack(p_151396_1_, 1, 32767), p_151396_2_, p_151396_3_);
+    }
+
+    public void func_151394_a(ItemStack p_151394_1_, ItemStack p_151394_2_, float p_151394_3_) {
+        this.smeltingList.put(p_151394_1_, p_151394_2_);
+        this.experienceList.put(p_151394_2_, Float.valueOf(p_151394_3_));
+    }
+
+    public ItemStack getSmeltingResult(ItemStack p_151395_1_) {
+        Map.Entry entry;
+        Iterator iterator = this.smeltingList.entrySet().iterator();
+        do {
+            if (iterator.hasNext()) continue;
+            return null;
+        } while (!this.func_151397_a(p_151395_1_, (ItemStack)(entry = iterator.next()).getKey()));
+        return (ItemStack)entry.getValue();
+    }
+
+    private boolean func_151397_a(ItemStack p_151397_1_, ItemStack p_151397_2_) {
+        return p_151397_2_.func_77973_b() == p_151397_1_.func_77973_b() && (p_151397_2_.func_77960_j() == 32767 || p_151397_2_.func_77960_j() == p_151397_1_.func_77960_j());
+    }
+
+    public Map getSmeltingList() {
+        return this.smeltingList;
+    }
+
+    public float func_151398_b(ItemStack p_151398_1_) {
+        Map.Entry entry;
+        float ret = p_151398_1_.func_77973_b().getSmeltingExperience(p_151398_1_);
+        if (ret != -1.0f) {
+            return ret;
+        }
+        Iterator iterator = this.experienceList.entrySet().iterator();
+        do {
+            if (iterator.hasNext()) continue;
+            return 0.0f;
+        } while (!this.func_151397_a(p_151398_1_, (ItemStack)(entry = iterator.next()).getKey()));
+        return ((Float)entry.getValue()).floatValue();
+    }
+}
+

@@ -1,0 +1,9 @@
+item.itemRawMutton.name=Raw Lamb Meat
+item.itemCookedMutton.name=Cooked Lamb Meat
+item.itemBlueberry.name=Blueberry
+item.itemBlackberry.name=Blackberry
+item.itemRaspberry.name=Raspberry
+
+tile.blockBlackberryBush.name=Blackberry Bush
+
+itemGroup.igoodiesfarm=iGoodie's Farm Foods

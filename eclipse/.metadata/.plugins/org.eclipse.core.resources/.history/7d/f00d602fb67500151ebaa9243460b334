@@ -1,0 +1,33 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  net.minecraft.item.crafting.IRecipe
+ *  net.minecraft.item.crafting.ShapedRecipes
+ *  net.minecraft.item.crafting.ShapelessRecipes
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.CraftingManagerPamPot;
+import java.util.Comparator;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
+
+class RecipeSorterPamPot
+implements Comparator {
+    final CraftingManagerPamPot craftingmanangerpampot;
+
+    RecipeSorterPamPot(CraftingManagerPamPot craftingmanangerpampot) {
+        this.craftingmanangerpampot = craftingmanangerpampot;
+    }
+
+    public int compareRecipes(IRecipe par1IRecipe, IRecipe par2IRecipe) {
+        return par1IRecipe instanceof ShapelessRecipes && par2IRecipe instanceof ShapedRecipes ? 1 : (par2IRecipe instanceof ShapelessRecipes && par1IRecipe instanceof ShapedRecipes ? -1 : (par2IRecipe.func_77570_a() < par1IRecipe.func_77570_a() ? -1 : (par2IRecipe.func_77570_a() > par1IRecipe.func_77570_a() ? 1 : 0)));
+    }
+
+    public int compare(Object par1Obj, Object par2Obj) {
+        return this.compareRecipes((IRecipe)par1Obj, (IRecipe)par2Obj);
+    }
+}
+

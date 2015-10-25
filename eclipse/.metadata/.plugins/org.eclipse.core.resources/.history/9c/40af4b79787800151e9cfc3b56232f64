@@ -1,0 +1,27 @@
+package igoodie.igoodiesfarm.client.renderers;
+
+import igoodie.igoodiesfarm.References;
+import igoodie.igoodiesfarm.client.models.ModelCrop;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+
+public class RenderCrop extends TileEntitySpecialRenderer
+{
+
+	private static final ResourceLocation texture = new ResourceLocation(References.MOD_ID+":textures/model/New.png");
+	
+	private ModelCrop model;
+	
+	public RenderCrop()
+	{
+		this.model = new ModelCrop();
+	}
+	
+	@Override
+	public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float f) 
+	{
+		
+	}
+
+}

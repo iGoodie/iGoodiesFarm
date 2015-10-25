@@ -1,0 +1,11 @@
+package igoodie.goodiesfarm.items;
+
+import net.minecraft.item.Item;
+
+public class ItemHungerizer extends Item
+{
+	public ItemHungerizer() 
+	{
+	
+	}
+}

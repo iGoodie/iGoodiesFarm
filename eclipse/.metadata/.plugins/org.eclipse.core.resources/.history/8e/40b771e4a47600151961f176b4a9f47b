@@ -1,0 +1,8 @@
+package igoodie.igoodiesfarm.client.gui;
+
+import cpw.mods.fml.common.network.IGuiHandler;
+
+public class GoodiesFarmGuiHandler implements IGuiHandler
+{
+
+}

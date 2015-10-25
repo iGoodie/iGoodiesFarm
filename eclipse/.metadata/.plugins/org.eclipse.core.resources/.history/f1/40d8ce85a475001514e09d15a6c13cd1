@@ -1,0 +1,24 @@
+package igoodie.goodiesfarm.tabs;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import igoodie.goodiesfarm.items.ItemRawMutton;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+
+public class GoodiesFarmTab extends CreativeTabs
+{
+	public static GoodiesFarmTab tabInstance;
+	
+	public GoodiesFarmTab() 
+	{
+		super(CreativeTabs.getNextID(), "Goodie's Farm Items");
+	}
+
+	@SideOnly(Side.CLIENT)
+	public Item getTabIconItem() 
+	{
+		return new ItemRawMutton();
+	}
+	
+}

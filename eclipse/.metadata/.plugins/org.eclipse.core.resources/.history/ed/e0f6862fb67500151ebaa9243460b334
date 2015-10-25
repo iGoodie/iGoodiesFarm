@@ -1,0 +1,101 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  cpw.mods.fml.common.FMLCommonHandler
+ *  net.minecraft.entity.Entity
+ *  net.minecraft.entity.item.EntityXPOrb
+ *  net.minecraft.entity.player.EntityPlayer
+ *  net.minecraft.init.Items
+ *  net.minecraft.inventory.IInventory
+ *  net.minecraft.inventory.Slot
+ *  net.minecraft.item.Item
+ *  net.minecraft.item.ItemStack
+ *  net.minecraft.stats.Achievement
+ *  net.minecraft.stats.AchievementList
+ *  net.minecraft.stats.StatBase
+ *  net.minecraft.util.MathHelper
+ *  net.minecraft.world.World
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.ChurnRecipes;
+import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.Achievement;
+import net.minecraft.stats.AchievementList;
+import net.minecraft.stats.StatBase;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+
+public class SlotChurn
+extends Slot {
+    private EntityPlayer thePlayer;
+    private int field_75228_b;
+    private static final String __OBFID = "CL_00001749";
+
+    public SlotChurn(EntityPlayer p_i1813_1_, IInventory p_i1813_2_, int p_i1813_3_, int p_i1813_4_, int p_i1813_5_) {
+        super(p_i1813_2_, p_i1813_3_, p_i1813_4_, p_i1813_5_);
+        this.thePlayer = p_i1813_1_;
+    }
+
+    public boolean func_75214_a(ItemStack p_75214_1_) {
+        return false;
+    }
+
+    public ItemStack func_75209_a(int p_75209_1_) {
+        if (this.func_75216_d()) {
+            this.field_75228_b+=Math.min(p_75209_1_, this.func_75211_c().field_77994_a);
+        }
+        return super.func_75209_a(p_75209_1_);
+    }
+
+    public void func_82870_a(EntityPlayer p_82870_1_, ItemStack p_82870_2_) {
+        this.func_75208_c(p_82870_2_);
+        super.func_82870_a(p_82870_1_, p_82870_2_);
+    }
+
+    protected void func_75210_a(ItemStack p_75210_1_, int p_75210_2_) {
+        this.field_75228_b+=p_75210_2_;
+        this.func_75208_c(p_75210_1_);
+    }
+
+    protected void func_75208_c(ItemStack p_75208_1_) {
+        p_75208_1_.func_77980_a(this.thePlayer.field_70170_p, this.thePlayer, this.field_75228_b);
+        if (!this.thePlayer.field_70170_p.field_72995_K) {
+            int j;
+            int i = this.field_75228_b;
+            float f = ChurnRecipes.smelting().func_151398_b(p_75208_1_);
+            if (f == 0.0f) {
+                i = 0;
+            } else if (f < 1.0f) {
+                j = MathHelper.func_76141_d((float)((float)i * f));
+                if (j < MathHelper.func_76123_f((float)((float)i * f)) && (float)Math.random() < (float)i * f - (float)j) {
+                    ++j;
+                }
+                i = j;
+            }
+            while (i > 0) {
+                j = EntityXPOrb.func_70527_a((int)i);
+                i-=j;
+                this.thePlayer.field_70170_p.func_72838_d((Entity)new EntityXPOrb(this.thePlayer.field_70170_p, this.thePlayer.field_70165_t, this.thePlayer.field_70163_u + 0.5, this.thePlayer.field_70161_v + 0.5, j));
+            }
+        }
+        this.field_75228_b = 0;
+        FMLCommonHandler.instance().firePlayerSmeltedEvent(this.thePlayer, p_75208_1_);
+        if (p_75208_1_.func_77973_b() == Items.field_151042_j) {
+            this.thePlayer.func_71064_a((StatBase)AchievementList.field_76016_k, 1);
+        }
+        if (p_75208_1_.func_77973_b() == Items.field_151101_aQ) {
+            this.thePlayer.func_71064_a((StatBase)AchievementList.field_76026_p, 1);
+        }
+    }
+}
+

@@ -1,0 +1,15 @@
+package igoodie.goodiesfarm.items;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemFood;
+
+public class ItemMutton extends ItemFood
+{
+	public ItemMutton() 
+	{
+		super(10, 10, false);
+		this.setCreativeTab(CreativeTabs.tabFood);
+		this.setUnlocalizedName("itemMutton");
+		this.setMaxStackSize(64);
+	}
+}

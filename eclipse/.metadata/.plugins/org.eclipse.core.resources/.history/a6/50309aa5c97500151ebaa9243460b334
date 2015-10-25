@@ -1,0 +1,38 @@
+package igoodie.igoodiesfarm.blocks;
+
+import net.minecraft.block.BlockCrops;
+import net.minecraft.util.IIcon;
+import net.minecraftforge.common.IPlantable;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class BlockTurnipCrop extends BlockCrops implements IPlantable
+{
+	@SideOnly(Side.CLIENT)
+	private IIcon[] progress;
+	
+	public BlockTurnipCrop() 
+	{
+		this.setBlockName("blockTurnipCrop");
+		this.setBlockTextureName("blockTurnipCrop");
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+    {
+        if (p_149691_2_ < 7)
+        {
+            if (p_149691_2_ == 6)
+            {
+                p_149691_2_ = 5;
+            }
+
+            return this.field_149869_a[p_149691_2_ >> 1];
+        }
+        else
+        {
+            return this.field_149869_a[3];
+        }
+    }
+	
+}

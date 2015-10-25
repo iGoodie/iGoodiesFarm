@@ -1,0 +1,9 @@
+package igoodie.igoodiesfarm.client.gui;
+
+public class StringWithStroke 
+{
+	public static void draw()
+	{
+		
+	}
+}

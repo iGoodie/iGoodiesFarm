@@ -1,0 +1,14 @@
+package igoodie.goodiesfarm.tabs;
+
+import net.minecraft.creativetab.CreativeTabs;
+
+public class GoodiesFarmTab extends CreativeTabs
+{
+
+	public GoodiesFarmTab() 
+	{
+		super(p_i1853_1_, p_i1853_2_);
+		// TODO Auto-generated constructor stub
+	}
+	
+}

@@ -1,0 +1,34 @@
+package net.minecraft.block;
+
+import net.minecraft.block.material.Material;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
+
+public class BlockBlueberryBush extends Block implements IPlantable
+{
+
+	protected BlockBlueberryBush() 
+	{
+		super(Material.plants);
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) 
+	{
+		return ;
+	}
+
+	@Override
+	public Block getPlant(IBlockAccess world, int x, int y, int z) 
+	{
+		return null;
+	}
+
+	@Override
+	public int getPlantMetadata(IBlockAccess world, int x, int y, int z) 
+	{
+		return 0;
+	}
+	
+}

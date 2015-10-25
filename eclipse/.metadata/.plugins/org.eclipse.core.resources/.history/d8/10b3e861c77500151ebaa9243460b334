@@ -1,0 +1,9 @@
+package igoodie.goodiesfarm.blocks;
+
+import net.minecraft.block.BlockCrops;
+import net.minecraftforge.common.IPlantable;
+
+public class BlockTurnipCrop extends BlockCrops implements IPlantable
+{
+
+}

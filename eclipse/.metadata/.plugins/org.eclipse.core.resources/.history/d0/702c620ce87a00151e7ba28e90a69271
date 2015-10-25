@@ -1,0 +1,5 @@
+package igoodie.igoodiesfarm.entities;
+
+public class TileEntityBlueberryBush {
+
+}

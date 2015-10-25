@@ -1,0 +1,18 @@
+package igoodie.igoodiesfarm.overrides;
+
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class GoodiesFarmOverrides 
+{
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public static void overrideAppleTooltip(ItemTooltipEvent event)
+	{
+		event.toolTip.set(1, "ANAN");
+	}
+}

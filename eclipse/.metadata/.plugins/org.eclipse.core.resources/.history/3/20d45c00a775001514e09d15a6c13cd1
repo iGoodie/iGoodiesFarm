@@ -1,0 +1,35 @@
+package igoodie.goodiesfarm.items;
+
+import igoodie.goodiesfarm.tabs.GoodiesFarmTab;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class ItemRawMutton extends ItemFood
+{
+	public ItemRawMutton() 
+	{
+		super(1, 0.1f, true);
+		this.setCreativeTab(GoodiesFarmTab.tabInstance);
+		this.setUnlocalizedName("itemRawMutton");
+		this.setMaxStackSize(64);
+		this.setTextureName("itemRawMutton");
+		
+		//@SideOnly(Side.CLIENT)
+		this.bFull3D = true;
+	}
+	
+	//@SideOnly(Side.CLIENT)
+	public ItemStack onEaten(ItemStack p_77654_1_, World p_77654_2_, EntityPlayer p_77654_3_)
+    {
+        --p_77654_1_.stackSize;
+        p_77654_3_.getFoodStats().func_151686_a(this, p_77654_1_);
+        p_77654_2_.playSoundAtEntity(p_77654_3_, "random.burp", 0.5F, p_77654_2_.rand.nextFloat() * 0.1F + 0.9F);
+        this.onFoodEaten(p_77654_1_, p_77654_2_, p_77654_3_);
+        return p_77654_1_;
+    }
+}

@@ -1,0 +1,13 @@
+package igoodie.goodiesfarm.items;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
+public class GoodiesFarmItems 
+{
+	public static ItemMutton itemRawMutton = new ItemMutton();
+	
+	public static void init()
+	{
+		GameRegistry.registerItem(itemRawMutton, "itemRawMutton");
+	}
+}

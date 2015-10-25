@@ -1,0 +1,716 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  cpw.mods.fml.relauncher.Side
+ *  cpw.mods.fml.relauncher.SideOnly
+ *  net.minecraft.block.Block
+ *  net.minecraft.block.Block$SoundType
+ *  net.minecraft.block.BlockFlower
+ *  net.minecraft.client.renderer.texture.IIconRegister
+ *  net.minecraft.creativetab.CreativeTabs
+ *  net.minecraft.init.Blocks
+ *  net.minecraft.item.Item
+ *  net.minecraft.item.ItemStack
+ *  net.minecraft.util.IIcon
+ *  net.minecraft.world.World
+ *  net.minecraft.world.gen.feature.WorldGenAbstractTree
+ *  net.minecraft.world.gen.feature.WorldGenerator
+ *  net.minecraftforge.event.terraingen.TerrainGen
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.BlockRegistry;
+import com.pam.harvestcraft.WorldGenPamFruitLogTree;
+import com.pam.harvestcraft.WorldGenPamFruitTree;
+import com.pam.harvestcraft.harvestcraft;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+import java.util.Random;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFlower;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.event.terraingen.TerrainGen;
+
+public class BlockPamSapling
+extends BlockFlower {
+    protected BlockPamSapling() {
+        super(0);
+        float f = 0.4f;
+        this.func_149676_a(0.5f - f, 0.0f, 0.5f - f, 0.5f + f, f * 2.0f, 0.5f + f);
+        this.func_149675_a(true);
+        this.func_149672_a(Block.field_149779_h);
+        this.func_149647_a(harvestcraft.tabHarvestCraft2);
+    }
+
+    public int func_149692_a(int i) {
+        return i;
+    }
+
+    public void markOrGrowMarked(World world, int x, int y, int z, Random par1Random) {
+        int l = world.func_72805_g(x, y, z);
+        if ((l & 8) == 0) {
+            world.func_72921_c(x, y, z, l | 8, 4);
+        } else {
+            this.growTree(world, x, y, z, par1Random);
+        }
+    }
+
+    public boolean isSameSapling(World par1World, int par2, int par3, int par4, int par5) {
+        return par1World.func_147439_a(par2, par3, par4) == this && (par1World.func_72805_g(par2, par3, par4) & 3) == par5;
+    }
+
+    public void growTree(World world, int x, int y, int z, Random par1Random) {
+        int l;
+        int i1;
+        int j1;
+        WorldGenAbstractTree object;
+        if (this == BlockRegistry.pamappleSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 0, 0, BlockRegistry.pamApple);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamavocadoSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 0, 0, BlockRegistry.pamAvocado);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamcherrySapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 0, 0, BlockRegistry.pamCherry);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamchestnutSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 0, 0, BlockRegistry.pamChestnut);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamnutmegSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 0, 0, BlockRegistry.pamNutmeg);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pampearSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 0, 0, BlockRegistry.pamPear);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamplumSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 0, 0, BlockRegistry.pamPlum);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamwalnutSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 0, 0, BlockRegistry.pamWalnut);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamgooseberrySapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 0, 0, BlockRegistry.pamGooseberry);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pambananaSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamBanana);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamcoconutSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamCoconut);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamdateSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamDate);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamdragonfruitSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamDragonfruit);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pampapayaSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamPapaya);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamalmondSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamAlmond);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamapricotSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamApricot);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamcashewSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamCashew);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamdurianSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamDurian);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamfigSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamFig);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamgrapefruitSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamGrapefruit);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamlemonSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamLemon);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamlimeSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamLime);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pammangoSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamMango);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamoliveSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamOlive);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamorangeSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamOrange);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pampeachSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamPeach);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pampecanSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamPecan);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pampeppercornSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamPeppercorn);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pampersimmonSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamPersimmon);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pampistachioSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamPistachio);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pampomegranateSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamPomegranate);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamstarfruitSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamStarfruit);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamvanillabeanSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitTree(true, 5, 3, 3, BlockRegistry.pamVanillabean);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pammapleSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitLogTree(true, 5, 1, 1, BlockRegistry.pamMaple);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pampaperbarkSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitLogTree(true, 5, 3, 3, BlockRegistry.pamPaperbark);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+        if (this == BlockRegistry.pamcinnamonSapling) {
+            if (!TerrainGen.saplingGrowTree((World)world, (Random)par1Random, (int)x, (int)y, (int)z)) {
+                return;
+            }
+            l = world.func_72805_g(x, y, z) & 7;
+            object = null;
+            i1 = 0;
+            j1 = 0;
+            object = new WorldGenPamFruitLogTree(true, 5, 3, 3, BlockRegistry.pamCinnamon);
+            world.func_147465_d(x, y, z, Blocks.field_150350_a, 0, 4);
+            if (!((WorldGenerator)object).func_76484_a(world, par1Random, x + i1, y, z + j1)) {
+                world.func_147465_d(x, y, z, (Block)this, l, 4);
+            }
+        }
+    }
+
+    public void func_149674_a(World world, int x, int y, int z, Random par1Random) {
+        if (!world.field_72995_K) {
+            super.func_149674_a(world, x, y, z, par1Random);
+            if (world.func_72957_l(x, y + 1, z) >= 9 && par1Random.nextInt(7) == 0) {
+                this.markOrGrowMarked(world, x, y, z, par1Random);
+            }
+        }
+    }
+
+    @SideOnly(value=Side.CLIENT)
+    public void func_149651_a(IIconRegister par1IconRegister) {
+        if (this == BlockRegistry.pamalmondSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:almondSapling");
+        }
+        if (this == BlockRegistry.pamappleSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:appleSapling");
+        }
+        if (this == BlockRegistry.pamapricotSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:apricotSapling");
+        }
+        if (this == BlockRegistry.pamavocadoSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:avocadoSapling");
+        }
+        if (this == BlockRegistry.pambananaSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:bananaSapling");
+        }
+        if (this == BlockRegistry.pamcashewSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:cashewSapling");
+        }
+        if (this == BlockRegistry.pamcherrySapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:cherrySapling");
+        }
+        if (this == BlockRegistry.pamchestnutSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:chestnutSapling");
+        }
+        if (this == BlockRegistry.pamcinnamonSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:cinnamonSapling");
+        }
+        if (this == BlockRegistry.pamcoconutSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:coconutSapling");
+        }
+        if (this == BlockRegistry.pamdateSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:dateSapling");
+        }
+        if (this == BlockRegistry.pamdragonfruitSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:dragonfruitSapling");
+        }
+        if (this == BlockRegistry.pamdurianSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:durianSapling");
+        }
+        if (this == BlockRegistry.pamfigSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:figSapling");
+        }
+        if (this == BlockRegistry.pamgrapefruitSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:grapefruitSapling");
+        }
+        if (this == BlockRegistry.pamlemonSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:lemonSapling");
+        }
+        if (this == BlockRegistry.pamlimeSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:limeSapling");
+        }
+        if (this == BlockRegistry.pammapleSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:mapleSapling");
+        }
+        if (this == BlockRegistry.pammangoSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:mangoSapling");
+        }
+        if (this == BlockRegistry.pamnutmegSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:nutmegSapling");
+        }
+        if (this == BlockRegistry.pamoliveSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:oliveSapling");
+        }
+        if (this == BlockRegistry.pamorangeSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:orangeSapling");
+        }
+        if (this == BlockRegistry.pampapayaSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:papayaSapling");
+        }
+        if (this == BlockRegistry.pampaperbarkSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:paperbarkSapling");
+        }
+        if (this == BlockRegistry.pampeachSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:peachSapling");
+        }
+        if (this == BlockRegistry.pampeppercornSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:peppercornSapling");
+        }
+        if (this == BlockRegistry.pampistachioSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:pistachioSapling");
+        }
+        if (this == BlockRegistry.pampearSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:pearSapling");
+        }
+        if (this == BlockRegistry.pampecanSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:pecanSapling");
+        }
+        if (this == BlockRegistry.pampersimmonSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:persimmonSapling");
+        }
+        if (this == BlockRegistry.pamplumSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:plumSapling");
+        }
+        if (this == BlockRegistry.pampomegranateSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:pomegranateSapling");
+        }
+        if (this == BlockRegistry.pamstarfruitSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:starfruitSapling");
+        }
+        if (this == BlockRegistry.pamvanillabeanSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:vanillabeanSapling");
+        }
+        if (this == BlockRegistry.pamwalnutSapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:walnutSapling");
+        }
+        if (this == BlockRegistry.pamgooseberrySapling) {
+            this.field_149761_L = par1IconRegister.func_94245_a("harvestcraft:gooseberrySapling");
+        }
+    }
+
+    @SideOnly(value=Side.CLIENT)
+    public IIcon func_149691_a(int par1, int par2) {
+        return this.field_149761_L;
+    }
+
+    @SideOnly(value=Side.CLIENT)
+    public void func_149666_a(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
+        for (int i = 0; i < 1; ++i) {
+            par3List.add(new ItemStack(par1, 1, i));
+        }
+    }
+}
+

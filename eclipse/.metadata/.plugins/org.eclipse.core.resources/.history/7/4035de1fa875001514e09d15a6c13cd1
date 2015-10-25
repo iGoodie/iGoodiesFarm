@@ -1,0 +1,34 @@
+package igoodie.goodiesfarm.items;
+
+import igoodie.goodiesfarm.tabs.GoodiesFarmTab;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class ItemRawMutton extends ItemFood
+{
+	public ItemRawMutton() 
+	{
+		super(1, 0.1f, true);
+		this.setCreativeTab(GoodiesFarmTab.tabInstance);
+		this.setUnlocalizedName("itemRawMutton");
+		this.setMaxStackSize(64);
+		this.setTextureName("itemRawMutton");
+		
+		//@SideOnly(Side.CLIENT)
+		this.bFull3D = true;
+	}
+	
+	//@SideOnly(Side.CLIENT)
+	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player)
+	{
+        super.onEaten(stack, world, player);
+        player.inventory.addItemStackToInventory(new ItemStack(Items.bone, 1));
+        return stack;
+    }
+}

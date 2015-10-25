@@ -1,0 +1,8 @@
+package net.minecraft.block;
+
+import net.minecraftforge.common.IPlantable;
+
+public class BlockBlueberryBush extends Block implements IPlantable
+{
+
+}

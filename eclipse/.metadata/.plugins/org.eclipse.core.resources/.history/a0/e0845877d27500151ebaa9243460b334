@@ -1,0 +1,13 @@
+package igoodie.igoodiesfarm.blocks;
+
+import cpw.mods.fml.common.registry.GameRegistry;
+
+public class GoodiesFarmBlocks 
+{
+	public static BlockCactusCrop blockTurnipCrop = new BlockCactusCrop();
+	
+	public static void init()
+	{
+		GameRegistry.registerBlock(blockTurnipCrop, "blockTurnipCrop");
+	}
+}

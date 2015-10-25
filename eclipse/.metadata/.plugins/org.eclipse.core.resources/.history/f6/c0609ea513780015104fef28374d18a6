@@ -1,0 +1,8 @@
+package igoodie.igoodiesfarm.items;
+
+import net.minecraft.item.ItemSeeds;
+
+public class ItemTomatoSeeds extends ItemSeeds
+{
+
+}

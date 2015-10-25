@@ -1,0 +1,14 @@
+package igoodie.goodiesfarm.items;
+
+import igoodie.goodiesfarm.tabs.GoodiesFarmTab;
+import net.minecraft.item.ItemFood;
+
+public class ItemCookedMutton extends ItemFood
+{
+	public ItemCookedMutton()
+	{
+		super(6, 0.8f, false);
+		this.setCreativeTab(GoodiesFarmTab.tabInstance);
+		this.setTextureName("itemCookedMutton");
+	}
+}

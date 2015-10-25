@@ -1,0 +1,54 @@
+package igoodie.igoodiesfarm.blocks;
+
+import igoodie.igoodiesfarm.References;
+import igoodie.igoodiesfarm.entities.TileEntityPole;
+import igoodie.igoodiesfarm.tabs.GoodiesFarmTab;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockCrops;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class BlockPole extends BlockCrops implements ITileEntityProvider
+{
+	public BlockPole()
+	{
+		super();
+		this.setHardness(2.0F);
+		this.setResistance(5.0F);
+		this.setCreativeTab(GoodiesFarmTab.instance);
+		
+		this.setBlockName("blockPole");
+	}
+
+	public int getRenderType()
+	{
+		return -1;
+	}
+	
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+	
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
+	
+	@Override
+	public TileEntity createNewTileEntity(World world, int int1) 
+	{
+		return new TileEntityPole();
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister iconRegister)
+	{
+		this.blockIcon = Blocks.brewing_stand.getIcon(1, 1);
+	}
+}

@@ -1,0 +1,31 @@
+package igoodie.igoodiesfarm.proxy;
+
+import igoodie.igoodiesfarm.client.renderers.RenderCrop;
+import igoodie.igoodiesfarm.entities.TileEntityPole;
+import igoodie.igoodiesfarm.handlers.GoodiesFarmDropHandlers;
+import igoodie.igoodiesfarm.handlers.GoodiesFarmHoeHandler;
+import igoodie.igoodiesfarm.handlers.overrides.GoodiesFarmTooltipOverrides;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+
+public class ServerProxy 
+{
+	public void init(FMLPreInitializationEvent event)
+	{
+		MinecraftForge.EVENT_BUS.register(new GoodiesFarmDropHandlers());
+		MinecraftForge.EVENT_BUS.register(new GoodiesFarmTooltipOverrides());
+		MinecraftForge.EVENT_BUS.register(new GoodiesFarmHoeHandler());
+	}
+	
+	public void registerRenderThings()
+	{
+		
+	}
+	
+	public void registerTileEntitySpecialRenderer()
+	{
+		
+	}
+}

@@ -1,0 +1,10 @@
+package igoodie.goodiesfarm.proxy;
+
+import igoodie.goodiesfarm.handlers.GoodiesFarmDropHandlers;
+import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.FMLCommonHandler;
+
+public class ServerProxy 
+{
+	
+}

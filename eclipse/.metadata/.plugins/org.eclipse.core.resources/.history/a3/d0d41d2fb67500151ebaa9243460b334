@@ -1,0 +1,168 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  cpw.mods.fml.common.network.simpleimpl.IMessage
+ *  cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper
+ *  net.minecraft.client.Minecraft
+ *  net.minecraft.client.gui.FontRenderer
+ *  net.minecraft.client.gui.GuiButton
+ *  net.minecraft.client.gui.inventory.GuiContainer
+ *  net.minecraft.client.renderer.RenderHelper
+ *  net.minecraft.client.renderer.entity.RenderItem
+ *  net.minecraft.client.renderer.texture.TextureManager
+ *  net.minecraft.entity.player.EntityPlayer
+ *  net.minecraft.entity.player.InventoryPlayer
+ *  net.minecraft.inventory.Container
+ *  net.minecraft.inventory.IInventory
+ *  net.minecraft.item.Item
+ *  net.minecraft.item.ItemStack
+ *  net.minecraft.util.ResourceLocation
+ *  org.lwjgl.input.Keyboard
+ *  org.lwjgl.opengl.GL11
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.ContainerMarket;
+import com.pam.harvestcraft.MarketData;
+import com.pam.harvestcraft.MarketItems;
+import com.pam.harvestcraft.MessageMarketBuy;
+import com.pam.harvestcraft.MessageMarketClosed;
+import com.pam.harvestcraft.PacketHandler;
+import com.pam.harvestcraft.TileEntityMarket;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import java.util.List;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+public class GuiMarket
+extends GuiContainer {
+    private static final ResourceLocation gui = new ResourceLocation("harvestcraft:textures/gui/market.png");
+    private GuiButton left;
+    private GuiButton right;
+    private GuiButton button_buy;
+    private int itemNum;
+    private ItemStack buySlot;
+    private TileEntityMarket tileEntityMarket;
+    private EntityPlayer player;
+
+    public GuiMarket(InventoryPlayer inventoryplayer, TileEntityMarket tileEntityMarket) {
+        super((Container)new ContainerMarket((IInventory)inventoryplayer, tileEntityMarket));
+        this.tileEntityMarket = tileEntityMarket;
+    }
+
+    public void func_73866_w_() {
+        super.func_73866_w_();
+        Keyboard.enableRepeatEvents((boolean)false);
+        this.field_146292_n.clear();
+        int posX = this.field_146294_l / 2 - 48;
+        int posY = this.field_146295_m / 2 - 48;
+        this.left = new GuiButton(0, posX, posY - 21, 15, 20, "<");
+        this.right = new GuiButton(1, posX + 16, posY - 21, 15, 20, ">");
+        this.button_buy = new GuiButton(2, posX, posY + 1, 55, 20, "Buy");
+        this.field_146292_n.add(this.left);
+        this.field_146292_n.add(this.right);
+        this.field_146292_n.add(this.button_buy);
+        this.itemNum = this.tileEntityMarket.getBrowsingInfo();
+    }
+
+    protected void func_146284_a(GuiButton guibutton) {
+        if (!guibutton.field_146124_l) {
+            return;
+        }
+        if (guibutton.field_146127_k == 0) {
+            --this.itemNum;
+            if (this.itemNum < 0) {
+                this.itemNum = MarketItems.getSize() - 1;
+            }
+            this.tileEntityMarket.setBrowsingInfo(this.itemNum);
+        }
+        if (guibutton.field_146127_k == 1) {
+            ++this.itemNum;
+            if (this.itemNum > MarketItems.getSize() - 1) {
+                this.itemNum = 0;
+            }
+            this.tileEntityMarket.setBrowsingInfo(this.itemNum);
+        }
+        if (guibutton.field_146127_k == 2) {
+            this.buySlot = this.tileEntityMarket.func_70301_a(0);
+            if (this.buySlot != null) {
+                MarketData data = MarketItems.getData(this.itemNum);
+                if (this.buySlot.func_77973_b() == data.getCurrency().func_77973_b() && this.buySlot.func_77960_j() == data.getCurrency().func_77960_j()) {
+                    int price = data.getPrice();
+                    if (this.buySlot.field_77994_a == price) {
+                        PacketHandler.INSTANCE.sendToServer((IMessage)new MessageMarketBuy(this.itemNum, this.tileEntityMarket.field_145851_c, this.tileEntityMarket.field_145848_d, this.tileEntityMarket.field_145849_e, true));
+                    } else if (this.buySlot.field_77994_a > price && this.buySlot.field_77994_a > 1) {
+                        PacketHandler.INSTANCE.sendToServer((IMessage)new MessageMarketBuy(this.itemNum, this.tileEntityMarket.field_145851_c, this.tileEntityMarket.field_145848_d, this.tileEntityMarket.field_145849_e, false));
+                    }
+                    if (this.buySlot.field_77994_a == 0 && price == 1) {
+                        PacketHandler.INSTANCE.sendToServer((IMessage)new MessageMarketBuy(this.itemNum, this.tileEntityMarket.field_145851_c, this.tileEntityMarket.field_145848_d, this.tileEntityMarket.field_145849_e, true));
+                    }
+                }
+            }
+        }
+    }
+
+    public void func_146281_b() {
+        PacketHandler.INSTANCE.sendToServer((IMessage)new MessageMarketClosed(this.tileEntityMarket.field_145851_c, this.tileEntityMarket.field_145848_d, this.tileEntityMarket.field_145849_e));
+        super.func_146281_b();
+    }
+
+    protected void func_146979_b(int par1, int par2) {
+        this.field_146289_q.func_78276_b("Inventory", 8, this.field_147000_g - 96 + 13, 4210752);
+        GL11.glPushMatrix();
+        RenderHelper.func_74520_c();
+        GL11.glDisable((int)2896);
+        GL11.glEnable((int)32826);
+        GL11.glEnable((int)2903);
+        GL11.glEnable((int)2896);
+        GuiMarket.field_146296_j.field_77023_b = 100.0f;
+        MarketData data = MarketItems.getData(this.itemNum);
+        ItemStack item = data.getItem();
+        field_146296_j.func_82406_b(this.field_146289_q, this.field_146297_k.func_110434_K(), item, 73, 16);
+        field_146296_j.func_77021_b(this.field_146289_q, this.field_146297_k.func_110434_K(), item, 73, 16);
+        ItemStack currency = data.getCurrency();
+        field_146296_j.func_82406_b(this.field_146289_q, this.field_146297_k.func_110434_K(), currency, 100, 16);
+        field_146296_j.func_77021_b(this.field_146289_q, this.field_146297_k.func_110434_K(), currency, 100, 16);
+        GuiMarket.field_146296_j.field_77023_b = 0.0f;
+        GL11.glDisable((int)2896);
+        int price = data.getPrice();
+        this.field_146289_q.func_78276_b("x" + Integer.toString(price), 116, 20, 0);
+        GL11.glPopMatrix();
+        GL11.glEnable((int)2896);
+        GL11.glEnable((int)2929);
+        RenderHelper.func_74519_b();
+    }
+
+    public void func_73863_a(int par1, int par2, float par3) {
+        super.func_73863_a(par1, par2, par3);
+        ItemStack item = MarketItems.getData(this.itemNum).getItem();
+        if (this.func_146978_c(73, 16, 16, 16, par1, par2)) {
+            this.func_146285_a(item, par1, par2);
+        }
+    }
+
+    protected void func_146976_a(float f, int i, int j) {
+        GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+        this.field_146297_k.func_110434_K().func_110577_a(gui);
+        int l = (this.field_146294_l - this.field_146999_f) / 2;
+        int i1 = (this.field_146295_m - this.field_147000_g) / 2;
+        this.func_73729_b(l, i1 - 10, 0, 0, this.field_146999_f, this.field_147000_g + 21);
+    }
+}
+

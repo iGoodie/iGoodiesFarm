@@ -1,0 +1,241 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  cpw.mods.fml.common.FMLCommonHandler
+ *  cpw.mods.fml.common.IFuelHandler
+ *  cpw.mods.fml.common.IWorldGenerator
+ *  cpw.mods.fml.common.Mod
+ *  cpw.mods.fml.common.Mod$EventHandler
+ *  cpw.mods.fml.common.Mod$Instance
+ *  cpw.mods.fml.common.SidedProxy
+ *  cpw.mods.fml.common.event.FMLInitializationEvent
+ *  cpw.mods.fml.common.event.FMLPostInitializationEvent
+ *  cpw.mods.fml.common.event.FMLPreInitializationEvent
+ *  cpw.mods.fml.common.eventhandler.Event
+ *  cpw.mods.fml.common.eventhandler.Event$Result
+ *  cpw.mods.fml.common.eventhandler.EventBus
+ *  cpw.mods.fml.common.eventhandler.SubscribeEvent
+ *  cpw.mods.fml.common.network.IGuiHandler
+ *  cpw.mods.fml.common.network.NetworkRegistry
+ *  cpw.mods.fml.common.registry.GameRegistry
+ *  mantle.lib.TabTools
+ *  mantle.pulsar.control.PulseManager
+ *  net.minecraft.block.Block
+ *  net.minecraft.block.material.Material
+ *  net.minecraft.entity.Entity
+ *  net.minecraft.entity.EntityCreature
+ *  net.minecraft.entity.EntityLiving
+ *  net.minecraft.entity.ai.EntityAIBase
+ *  net.minecraft.entity.ai.EntityAITasks
+ *  net.minecraft.entity.ai.EntityAITempt
+ *  net.minecraft.entity.passive.EntityAnimal
+ *  net.minecraft.entity.passive.EntityChicken
+ *  net.minecraft.entity.passive.EntityCow
+ *  net.minecraft.entity.passive.EntitySheep
+ *  net.minecraft.entity.player.EntityPlayer
+ *  net.minecraft.entity.player.InventoryPlayer
+ *  net.minecraft.entity.player.PlayerCapabilities
+ *  net.minecraft.item.Item
+ *  net.minecraft.item.ItemStack
+ *  net.minecraft.nbt.NBTTagCompound
+ *  net.minecraft.world.World
+ *  net.minecraftforge.common.DimensionManager
+ *  net.minecraftforge.common.MinecraftForge
+ *  net.minecraftforge.event.entity.EntityJoinWorldEvent
+ *  net.minecraftforge.event.entity.player.BonemealEvent
+ *  net.minecraftforge.event.entity.player.EntityInteractEvent
+ *  net.minecraftforge.event.world.ChunkDataEvent
+ *  net.minecraftforge.event.world.ChunkDataEvent$Save
+ *  net.minecraftforge.oredict.OreDictionary
+ *  org.apache.logging.log4j.LogManager
+ *  org.apache.logging.log4j.Logger
+ */
+package mods.natura;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.IFuelHandler;
+import cpw.mods.fml.common.IWorldGenerator;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.Event;
+import cpw.mods.fml.common.eventhandler.EventBus;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import java.io.File;
+import java.util.Random;
+import mantle.lib.TabTools;
+import mantle.pulsar.control.PulseManager;
+import mods.natura.CloudMaterial;
+import mods.natura.blocks.crops.BerryBush;
+import mods.natura.blocks.crops.Glowshroom;
+import mods.natura.blocks.crops.NetherBerryBush;
+import mods.natura.blocks.trees.NSaplingBlock;
+import mods.natura.common.NContent;
+import mods.natura.common.NProxyCommon;
+import mods.natura.common.NaturaTab;
+import mods.natura.common.PHNatura;
+import mods.natura.dimension.NetheriteWorldProvider;
+import mods.natura.gui.NGuiHandler;
+import mods.natura.plugins.PluginController;
+import mods.natura.worldgen.BaseCloudWorldgen;
+import mods.natura.worldgen.BaseCropWorldgen;
+import mods.natura.worldgen.BaseTreeWorldgen;
+import mods.natura.worldgen.retro.TickHandlerWorld;
+import mods.natura.worldgen.retro.WorldHandler;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.ai.EntityAITasks;
+import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.PlayerCapabilities;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.player.BonemealEvent;
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
+import net.minecraftforge.event.world.ChunkDataEvent;
+import net.minecraftforge.oredict.OreDictionary;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+@Mod(modid="Natura", name="Natura", version="2.2.0", acceptedMinecraftVersions="[1.7.10]", dependencies="required-after:Mantle")
+public class Natura {
+    @SidedProxy(clientSide="mods.natura.client.NProxyClient", serverSide="mods.natura.common.NProxyCommon")
+    public static NProxyCommon proxy;
+    public static final String modID = "Natura";
+    @Mod.Instance(value="Natura")
+    public static Natura instance;
+    public static Material cloud;
+    public static Logger logger;
+    public static final PulseManager pulsar;
+    public static BaseCropWorldgen crops;
+    public static BaseCloudWorldgen clouds;
+    public static BaseTreeWorldgen trees;
+    public static boolean retrogen;
+    NContent content;
+    public static Random random;
+
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent evt) {
+        MinecraftForge.EVENT_BUS.register((Object)this);
+        PluginController.registerBuiltins();
+        PHNatura.initProps(evt.getSuggestedConfigurationFile());
+        NaturaTab.tab = new TabTools("natura.plants");
+        NaturaTab.woodTab = new TabTools("natura.trees");
+        NaturaTab.netherTab = new TabTools("natura.nether");
+        this.content = new NContent();
+        this.content.preInit();
+        this.content.addOredictSupport();
+        NaturaTab.tab.init(new ItemStack(NContent.boneBag, 0));
+        NaturaTab.woodTab.init(new ItemStack((Block)NContent.floraSapling, 1, 3));
+        NaturaTab.netherTab.init(new ItemStack((Block)NContent.floraSapling, 1, 5));
+        pulsar.preInit(evt);
+    }
+
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent evt) {
+        crops = new BaseCropWorldgen();
+        GameRegistry.registerWorldGenerator((IWorldGenerator)crops, (int)20);
+        clouds = new BaseCloudWorldgen();
+        GameRegistry.registerWorldGenerator((IWorldGenerator)clouds, (int)20);
+        trees = new BaseTreeWorldgen();
+        GameRegistry.registerWorldGenerator((IWorldGenerator)trees, (int)20);
+        proxy.registerRenderer();
+        proxy.addNames();
+        NetworkRegistry.INSTANCE.registerGuiHandler((Object)instance, (IGuiHandler)new NGuiHandler());
+        GameRegistry.registerFuelHandler((IFuelHandler)this.content);
+        if (PHNatura.overrideNether) {
+            DimensionManager.unregisterProviderType((int)-1);
+            DimensionManager.registerProviderType((int)-1, (Class)NetheriteWorldProvider.class, (boolean)true);
+        }
+        MinecraftForge.EVENT_BUS.register((Object)WorldHandler.instance);
+        if (retrogen) {
+            FMLCommonHandler.instance().bus().register((Object)new TickHandlerWorld());
+        }
+        OreDictionary.registerOre((String)"cropVine", (ItemStack)new ItemStack(NContent.thornVines));
+        random.setSeed(3244);
+        pulsar.init(evt);
+    }
+
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent evt) {
+        this.content.createEntities();
+        this.content.modIntegration();
+        pulsar.postInit(evt);
+    }
+
+    @SubscribeEvent
+    public void bonemealEvent(BonemealEvent event) {
+        if (!(event.world.field_72995_K || event.isCanceled() || event.getResult() == Event.Result.ALLOW)) {
+            if (event.block == NContent.glowshroom && NContent.glowshroom.fertilizeMushroom(event.world, event.x, event.y, event.z, event.world.field_73012_v)) {
+                event.setResult(Event.Result.ALLOW);
+            }
+            if (event.block == NContent.berryBush && NContent.berryBush.boneFertilize(event.world, event.x, event.y, event.z, event.world.field_73012_v)) {
+                event.setResult(Event.Result.ALLOW);
+            }
+            if (event.block == NContent.netherBerryBush && NContent.netherBerryBush.boneFertilize(event.world, event.x, event.y, event.z, event.world.field_73012_v)) {
+                event.setResult(Event.Result.ALLOW);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void interactEvent(EntityInteractEvent event) {
+        if (event.target instanceof EntityCow || event.target instanceof EntitySheep) {
+            ItemStack equipped = event.entityPlayer.func_71045_bC();
+            EntityAnimal creature = (EntityAnimal)event.target;
+            if (!(equipped == null || equipped.func_77973_b() != NContent.plantItem || equipped.func_77960_j() != 0 || creature.func_70874_b() != 0 || creature.func_70880_s())) {
+                EntityPlayer player = event.entityPlayer;
+                if (!player.field_71075_bZ.field_75098_d) {
+                    --equipped.field_77994_a;
+                    if (equipped.field_77994_a <= 0) {
+                        player.field_71071_by.func_70299_a(player.field_71071_by.field_70461_c, null);
+                    }
+                }
+                creature.func_146082_f(event.entityPlayer);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void spawnEvent(EntityJoinWorldEvent event) {
+        if (event.entity instanceof EntityCow || event.entity instanceof EntitySheep) {
+            ((EntityLiving)event.entity).field_70714_bg.func_75776_a(3, (EntityAIBase)new EntityAITempt((EntityCreature)event.entity, 0.25, NContent.plantItem, false));
+        }
+        if (event.entity instanceof EntityChicken) {
+            ((EntityLiving)event.entity).field_70714_bg.func_75776_a(3, (EntityAIBase)new EntityAITempt((EntityCreature)event.entity, 0.25, NContent.seeds, false));
+        }
+    }
+
+    @SubscribeEvent
+    public void chunkDataSave(ChunkDataEvent.Save event) {
+        event.getData().func_74757_a("Natura.Retrogen", true);
+    }
+
+    static {
+        cloud = new CloudMaterial();
+        logger = LogManager.getLogger((String)"Natura");
+        pulsar = new PulseManager("Natura", "Natura-Dynamic");
+        random = new Random();
+    }
+}
+

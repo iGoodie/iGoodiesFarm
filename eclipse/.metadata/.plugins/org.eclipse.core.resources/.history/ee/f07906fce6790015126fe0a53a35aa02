@@ -1,0 +1,18 @@
+package igoodie.igoodiesfarm.blocks;
+
+import igoodie.igoodiesfarm.entities.TileEntityBlackberryBush;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.client.model.ModelBase;
+
+public class GoodiesFarmBlocks 
+{
+	public static BlockBlackberryBush blockBlackberryBush = new BlockBlackberryBush();
+	
+	public static void init()
+	{
+		GameRegistry.registerBlock(blockBlackberryBush, "blockBlackberryBush");
+		
+
+		GameRegistry.registerTileEntity(TileEntityBlackberryBush.class, "igoodiesfarm:TileEntityBlackberryBush");
+	}
+}

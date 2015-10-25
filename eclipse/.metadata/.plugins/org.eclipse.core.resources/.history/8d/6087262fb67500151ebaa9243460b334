@@ -1,0 +1,367 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  net.minecraft.block.Block
+ *  net.minecraft.init.Blocks
+ *  net.minecraft.init.Items
+ *  net.minecraft.item.Item
+ *  net.minecraft.item.ItemStack
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.BlockRegistry;
+import com.pam.harvestcraft.ItemRegistry;
+import com.pam.harvestcraft.MarketData;
+import java.util.ArrayList;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+
+public class MarketItems {
+    private static ArrayList<MarketData> items = new ArrayList();
+
+    public static void registerItems(MarketData data) {
+        items.add(data);
+    }
+
+    public static MarketData getData(int i) {
+        return items.get(i);
+    }
+
+    public static int getSize() {
+        return items.size();
+    }
+
+    public static void registerItems() {
+        int i;
+        if (BlockRegistry.marketsellSeeds) {
+            if (BlockRegistry.marketcurrencySeeds == 0) {
+                for (i = 0; i < 60; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(ItemRegistry.PamSeeds[i]), new ItemStack(Items.field_151166_bC), BlockRegistry.marketseedPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151014_N), new ItemStack(Items.field_151166_bC), BlockRegistry.marketseedPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151080_bb), new ItemStack(Items.field_151166_bC), BlockRegistry.marketseedPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151081_bc), new ItemStack(Items.field_151166_bC), BlockRegistry.marketseedPrice));
+            }
+            if (BlockRegistry.marketcurrencySeeds == 1) {
+                for (i = 0; i < 60; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(ItemRegistry.PamSeeds[i]), new ItemStack(Items.field_151045_i), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151014_N), new ItemStack(Items.field_151045_i), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151080_bb), new ItemStack(Items.field_151045_i), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151081_bc), new ItemStack(Items.field_151045_i), BlockRegistry.marketseedPrice));
+                }
+            }
+            if (BlockRegistry.marketcurrencySeeds == 2) {
+                for (i = 0; i < 60; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(ItemRegistry.PamSeeds[i]), new ItemStack(Items.field_151043_k), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151014_N), new ItemStack(Items.field_151043_k), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151080_bb), new ItemStack(Items.field_151043_k), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151081_bc), new ItemStack(Items.field_151043_k), BlockRegistry.marketseedPrice));
+                }
+            }
+            if (BlockRegistry.marketcurrencySeeds == 3) {
+                for (i = 0; i < 60; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(ItemRegistry.PamSeeds[i]), new ItemStack(Items.field_151074_bl), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151014_N), new ItemStack(Items.field_151074_bl), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151080_bb), new ItemStack(Items.field_151074_bl), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151081_bc), new ItemStack(Items.field_151074_bl), BlockRegistry.marketseedPrice));
+                }
+            }
+            if (BlockRegistry.marketcurrencySeeds == 4) {
+                for (i = 0; i < 60; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(ItemRegistry.PamSeeds[i]), new ItemStack(Items.field_151042_j), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151014_N), new ItemStack(Items.field_151042_j), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151080_bb), new ItemStack(Items.field_151042_j), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151081_bc), new ItemStack(Items.field_151042_j), BlockRegistry.marketseedPrice));
+                }
+            }
+            if (BlockRegistry.marketcurrencySeeds == 5) {
+                for (i = 0; i < 60; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(ItemRegistry.PamSeeds[i]), new ItemStack(Items.field_151014_N), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151014_N), new ItemStack(Items.field_151014_N), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151080_bb), new ItemStack(Items.field_151014_N), BlockRegistry.marketseedPrice));
+                    MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151081_bc), new ItemStack(Items.field_151014_N), BlockRegistry.marketseedPrice));
+                }
+            }
+        }
+        if (BlockRegistry.marketselltemperateSaplings) {
+            if (BlockRegistry.marketcurrencytemperateSaplings == 0) {
+                for (i = 0; i < 9; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamTemperateSaplings[i], 1), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 0), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 2), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 5), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytemperateSaplings == 1) {
+                for (i = 0; i < 9; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamTemperateSaplings[i], 1), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 0), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 2), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 5), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytemperateSaplings == 2) {
+                for (i = 0; i < 9; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamTemperateSaplings[i], 1), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 0), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 2), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 5), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytemperateSaplings == 3) {
+                for (i = 0; i < 9; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamTemperateSaplings[i], 1), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 0), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 2), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 5), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytemperateSaplings == 4) {
+                for (i = 0; i < 9; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamTemperateSaplings[i], 1), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 0), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 2), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 5), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytemperateSaplings == 5) {
+                for (i = 0; i < 9; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamTemperateSaplings[i], 1), new ItemStack(Blocks.field_150345_g, 1, 0), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 0), new ItemStack(Blocks.field_150345_g, 1, 0), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 2), new ItemStack(Blocks.field_150345_g, 1, 0), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 5), new ItemStack(Blocks.field_150345_g, 1, 0), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytemperateSaplings == 6) {
+                for (i = 0; i < 9; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamTemperateSaplings[i], 1), new ItemStack(Items.field_151034_e), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 0), new ItemStack(Items.field_151034_e), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 2), new ItemStack(Items.field_151034_e), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 5), new ItemStack(Items.field_151034_e), BlockRegistry.marketsaplingPrice));
+            }
+        }
+        if (BlockRegistry.marketselltropicalSaplings) {
+            if (BlockRegistry.marketcurrencytropicalSaplings == 0) {
+                for (i = 0; i < 24; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamWarmSaplings[i], 1), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pamcinnamonSapling, 1), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pampaperbarkSapling, 1), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 3), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 4), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytropicalSaplings == 1) {
+                for (i = 0; i < 24; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamWarmSaplings[i], 1), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pamcinnamonSapling, 1), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pampaperbarkSapling, 1), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 3), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 4), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytropicalSaplings == 2) {
+                for (i = 0; i < 24; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamWarmSaplings[i], 1), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pamcinnamonSapling, 1), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pampaperbarkSapling, 1), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 3), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 4), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytropicalSaplings == 3) {
+                for (i = 0; i < 24; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamWarmSaplings[i], 1), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pamcinnamonSapling, 1), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pampaperbarkSapling, 1), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 3), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 4), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytropicalSaplings == 4) {
+                for (i = 0; i < 24; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamWarmSaplings[i], 1), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pamcinnamonSapling, 1), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pampaperbarkSapling, 1), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 3), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 4), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytropicalSaplings == 5) {
+                for (i = 0; i < 24; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamWarmSaplings[i], 1), new ItemStack(Blocks.field_150345_g, 1, 3), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pamcinnamonSapling, 1), new ItemStack(Blocks.field_150345_g, 1, 3), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pampaperbarkSapling, 1), new ItemStack(Blocks.field_150345_g, 1, 3), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 3), new ItemStack(Blocks.field_150345_g, 1, 3), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 4), new ItemStack(Blocks.field_150345_g, 1, 3), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytropicalSaplings == 6) {
+                for (i = 0; i < 24; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamWarmSaplings[i], 1), new ItemStack(Items.field_151034_e), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pamcinnamonSapling, 1), new ItemStack(Items.field_151034_e), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pampaperbarkSapling, 1), new ItemStack(Items.field_151034_e), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 3), new ItemStack(Items.field_151034_e), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 4), new ItemStack(Items.field_151034_e), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencytropicalSaplings == 7) {
+                for (i = 0; i < 24; ++i) {
+                    MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.PamWarmSaplings[i], 1), new ItemStack(Items.field_151100_aR, 1, 3), BlockRegistry.marketsaplingPrice));
+                }
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pamcinnamonSapling, 1), new ItemStack(Items.field_151100_aR, 1, 3), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pampaperbarkSapling, 1), new ItemStack(Items.field_151100_aR, 1, 3), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 3), new ItemStack(Items.field_151100_aR, 1, 3), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 4), new ItemStack(Items.field_151100_aR, 1, 3), BlockRegistry.marketsaplingPrice));
+            }
+        }
+        if (BlockRegistry.marketsellconiferousSaplings) {
+            if (BlockRegistry.marketcurrencyconiferousSaplings == 0) {
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pammapleSapling, 1), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 1), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencyconiferousSaplings == 1) {
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pammapleSapling, 1), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 1), new ItemStack(Items.field_151045_i), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencyconiferousSaplings == 2) {
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pammapleSapling, 1), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 1), new ItemStack(Items.field_151043_k), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencyconiferousSaplings == 3) {
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pammapleSapling, 1), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 1), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencyconiferousSaplings == 4) {
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pammapleSapling, 1), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 1), new ItemStack(Items.field_151042_j), BlockRegistry.marketsaplingPrice));
+            }
+            if (BlockRegistry.marketcurrencyconiferousSaplings == 5) {
+                MarketItems.registerItems(new MarketData(new ItemStack(BlockRegistry.pammapleSapling, 1), new ItemStack(Blocks.field_150345_g, 1, 1), BlockRegistry.marketsaplingPrice));
+                MarketItems.registerItems(new MarketData(new ItemStack(Blocks.field_150345_g, 1, 1), new ItemStack(Blocks.field_150345_g, 1, 1), BlockRegistry.marketsaplingPrice));
+            }
+        }
+        if (BlockRegistry.marketsellPig) {
+            if (BlockRegistry.marketcurrencyPig == 0) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 90), new ItemStack(Items.field_151166_bC), BlockRegistry.marketpigPrice));
+            }
+            if (BlockRegistry.marketcurrencyPig == 1) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 90), new ItemStack(Items.field_151045_i), BlockRegistry.marketpigPrice));
+            }
+            if (BlockRegistry.marketcurrencyPig == 2) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 90), new ItemStack(Items.field_151043_k), BlockRegistry.marketpigPrice));
+            }
+            if (BlockRegistry.marketcurrencyPig == 3) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 90), new ItemStack(Items.field_151074_bl), BlockRegistry.marketpigPrice));
+            }
+            if (BlockRegistry.marketcurrencyPig == 4) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 90), new ItemStack(Items.field_151042_j), BlockRegistry.marketpigPrice));
+            }
+            if (BlockRegistry.marketcurrencyPig == 5) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 90), new ItemStack(Items.field_151110_aK), BlockRegistry.marketpigPrice));
+            }
+        }
+        if (BlockRegistry.marketsellSheep) {
+            if (BlockRegistry.marketcurrencySheep == 0) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 91), new ItemStack(Items.field_151166_bC), BlockRegistry.marketsheepPrice));
+            }
+            if (BlockRegistry.marketcurrencySheep == 1) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 91), new ItemStack(Items.field_151045_i), BlockRegistry.marketsheepPrice));
+            }
+            if (BlockRegistry.marketcurrencySheep == 2) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 91), new ItemStack(Items.field_151043_k), BlockRegistry.marketsheepPrice));
+            }
+            if (BlockRegistry.marketcurrencySheep == 3) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 91), new ItemStack(Items.field_151074_bl), BlockRegistry.marketsheepPrice));
+            }
+            if (BlockRegistry.marketcurrencySheep == 4) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 91), new ItemStack(Items.field_151042_j), BlockRegistry.marketsheepPrice));
+            }
+            if (BlockRegistry.marketcurrencySheep == 5) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 91), new ItemStack(Items.field_151110_aK), BlockRegistry.marketsheepPrice));
+            }
+        }
+        if (BlockRegistry.marketsellCow) {
+            if (BlockRegistry.marketcurrencyCow == 0) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 92), new ItemStack(Items.field_151166_bC), BlockRegistry.marketcowPrice));
+            }
+            if (BlockRegistry.marketcurrencyCow == 1) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 92), new ItemStack(Items.field_151045_i), BlockRegistry.marketcowPrice));
+            }
+            if (BlockRegistry.marketcurrencyCow == 2) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 92), new ItemStack(Items.field_151043_k), BlockRegistry.marketcowPrice));
+            }
+            if (BlockRegistry.marketcurrencyCow == 3) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 92), new ItemStack(Items.field_151074_bl), BlockRegistry.marketcowPrice));
+            }
+            if (BlockRegistry.marketcurrencyCow == 4) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 92), new ItemStack(Items.field_151042_j), BlockRegistry.marketcowPrice));
+            }
+            if (BlockRegistry.marketcurrencyCow == 5) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 92), new ItemStack(Items.field_151110_aK), BlockRegistry.marketcowPrice));
+            }
+        }
+        if (BlockRegistry.marketsellChicken) {
+            if (BlockRegistry.marketcurrencyChicken == 0) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 93), new ItemStack(Items.field_151166_bC), BlockRegistry.marketchickenPrice));
+            }
+            if (BlockRegistry.marketcurrencyChicken == 1) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 93), new ItemStack(Items.field_151045_i), BlockRegistry.marketchickenPrice));
+            }
+            if (BlockRegistry.marketcurrencyChicken == 2) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 93), new ItemStack(Items.field_151043_k), BlockRegistry.marketchickenPrice));
+            }
+            if (BlockRegistry.marketcurrencyChicken == 3) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 93), new ItemStack(Items.field_151074_bl), BlockRegistry.marketchickenPrice));
+            }
+            if (BlockRegistry.marketcurrencyChicken == 4) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 93), new ItemStack(Items.field_151042_j), BlockRegistry.marketchickenPrice));
+            }
+            if (BlockRegistry.marketcurrencyChicken == 5) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 93), new ItemStack(Items.field_151110_aK), BlockRegistry.marketchickenPrice));
+            }
+        }
+        if (BlockRegistry.marketsellHorse) {
+            if (BlockRegistry.marketcurrencyHorse == 0) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 100), new ItemStack(Items.field_151166_bC), BlockRegistry.markethorsePrice));
+            }
+            if (BlockRegistry.marketcurrencyHorse == 1) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 100), new ItemStack(Items.field_151045_i), BlockRegistry.markethorsePrice));
+            }
+            if (BlockRegistry.marketcurrencyHorse == 2) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 100), new ItemStack(Items.field_151043_k), BlockRegistry.markethorsePrice));
+            }
+            if (BlockRegistry.marketcurrencyHorse == 3) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 100), new ItemStack(Items.field_151074_bl), BlockRegistry.markethorsePrice));
+            }
+            if (BlockRegistry.marketcurrencyHorse == 4) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 100), new ItemStack(Items.field_151042_j), BlockRegistry.markethorsePrice));
+            }
+            if (BlockRegistry.marketcurrencyHorse == 5) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151063_bx, 1, 100), new ItemStack(Items.field_151110_aK), BlockRegistry.markethorsePrice));
+            }
+        }
+        if (BlockRegistry.marketsellBonemeal) {
+            if (BlockRegistry.marketcurrencyBonemeal == 0) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151100_aR, 1, 15), new ItemStack(Items.field_151166_bC), BlockRegistry.marketbonemealPrice));
+            }
+            if (BlockRegistry.marketcurrencyBonemeal == 1) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151100_aR, 1, 15), new ItemStack(Items.field_151045_i), BlockRegistry.marketbonemealPrice));
+            }
+            if (BlockRegistry.marketcurrencyBonemeal == 2) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151100_aR, 1, 15), new ItemStack(Items.field_151043_k), BlockRegistry.marketbonemealPrice));
+            }
+            if (BlockRegistry.marketcurrencyBonemeal == 3) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151100_aR, 1, 15), new ItemStack(Items.field_151074_bl), BlockRegistry.marketbonemealPrice));
+            }
+            if (BlockRegistry.marketcurrencyBonemeal == 4) {
+                MarketItems.registerItems(new MarketData(new ItemStack(Items.field_151100_aR, 1, 15), new ItemStack(Items.field_151042_j), BlockRegistry.marketbonemealPrice));
+            }
+        }
+    }
+}
+

@@ -1,0 +1,39 @@
+package igoodie.igoodiesfarm.blocks;
+
+import igoodie.igoodiesfarm.tabs.GoodiesFarmTab;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
+
+public class BlockBlueberryBush extends Block implements IPlantable
+{
+
+	protected BlockBlueberryBush() 
+	{
+		super(Material.plants);
+		this.setTickRandomly(true);
+		this.setBlockName("blockBlueberryBush");
+		this.setCreativeTab(GoodiesFarmTab.tabInstance);
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) 
+	{
+		return EnumPlantType.Desert;
+	}
+
+	@Override
+	public Block getPlant(IBlockAccess world, int x, int y, int z) 
+	{
+		return GoodiesFarmBlocks.blockBlueberryBush;
+	}
+
+	@Override
+	public int getPlantMetadata(IBlockAccess world, int x, int y, int z) 
+	{
+		return 0;
+	}
+	
+}

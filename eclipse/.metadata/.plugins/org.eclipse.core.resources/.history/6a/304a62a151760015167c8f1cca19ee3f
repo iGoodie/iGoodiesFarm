@@ -1,0 +1,11 @@
+package igoodie.igoodiesfarm.blocks;
+
+import net.minecraft.client.model.ModelBase;
+
+public class GoodiesFarmBlocks 
+{
+	public static void init()
+	{
+		
+	}
+}

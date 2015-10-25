@@ -1,0 +1,12 @@
+package igoodie.goodiesfarm.blocks;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.BlockCrops;
+import net.minecraftforge.common.IPlantable;
+
+public class BlockTurnipCrop extends BlockCrops implements IPlantable
+{
+	@SideOnly(Side.CLIENT)
+	
+}

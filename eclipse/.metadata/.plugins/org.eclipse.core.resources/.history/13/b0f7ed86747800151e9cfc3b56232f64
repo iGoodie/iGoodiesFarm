@@ -1,0 +1,116 @@
+package igoodie.igoodiesfarm.blocks;
+
+import igoodie.igoodiesfarm.client.models.ModelCrossCrop;
+import igoodie.igoodiesfarm.items.GoodiesFarmItems;
+import igoodie.igoodiesfarm.tabs.GoodiesFarmTab;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.IGrowable;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class BlockTomatoCrop extends BlockBush implements IGrowable
+{
+	public BlockTomatoCrop()
+	{
+		super();
+		this.setCreativeTab(GoodiesFarmTab.instance);
+		this.setBlockName("blockTomatoCrop");
+		float f = 0.5F;
+		float f2 = 0.0625F;
+		this.setBlockBounds(0.5F - f, 0.0F-f2, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
+	}
+
+	/*@Override
+	public Item getItemDropped(int meta, Random random, int int1)
+	{
+		return meta == 7 ? GoodiesFarmItems.itemBlackberry : GoodiesFarmItems.itemTomatoSeeds;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_)
+	{
+		return GoodiesFarmItems.itemTomatoSeeds;
+	}*/
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon (int side, int meta)
+	{
+		return Blocks.yellow_flower.getIcon(1, 1);
+	}
+
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+	{
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+
+		if (metadata >= 7)
+		{
+			if (world.rand.nextInt(15) <= metadata)
+			{
+				ret.add(new ItemStack(GoodiesFarmItems.itemTomatoSeeds, 1));        		 
+			}
+			for (int i = 0; i< 3+fortune; ++i)
+			{
+				if (world.rand.nextInt(15) <= metadata)
+				{
+					ret.add(new ItemStack(GoodiesFarmItems.itemBlackberry, 1));
+				}
+			}
+		}
+		else
+		{
+			ret.add(new ItemStack(GoodiesFarmItems.itemTomatoSeeds, 1));
+		}
+
+		return ret;
+	}
+
+	@Override
+	public int getRenderType()
+	{
+		return ModelCrossCrop.id;
+	}
+
+	@Override //isnotfullygrown
+	public boolean func_149851_a(World p_149851_1_, int p_149851_2_,
+			int p_149851_3_, int p_149851_4_, boolean p_149851_5_) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override //canusebonemeal
+	public boolean func_149852_a(World p_149852_1_, Random p_149852_2_,
+			int p_149852_3_, int p_149852_4_, int p_149852_5_) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override //onusebonemeal
+	public void func_149853_b(World world, Random random, int x, int y, int z)
+	{
+		int meta = world.getBlockMetadata(x, y, z);
+        if (this.getMaxGrowth(meta) != meta)
+        {
+            int maxGrowth = this.getMaxGrowth(meta);
+            int growthSpan = maxGrowth - this.getStartGrowth(meta);
+            int output = Natura.random.nextInt(growthSpan) + 1 + meta;
+            
+            if (output > maxGrowth)
+                output = maxGrowth;
+            
+            if (output != meta)
+                world.setBlockMetadataWithNotify(x, y, z, output, 3);
+        }
+		
+	}
+}

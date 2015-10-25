@@ -1,0 +1,92 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  cpw.mods.fml.relauncher.Side
+ *  cpw.mods.fml.relauncher.SideOnly
+ *  net.minecraft.block.Block
+ *  net.minecraft.block.BlockCake
+ *  net.minecraft.entity.player.EntityPlayer
+ *  net.minecraft.util.AxisAlignedBB
+ *  net.minecraft.util.FoodStats
+ *  net.minecraft.world.IBlockAccess
+ *  net.minecraft.world.World
+ */
+package com.pam.harvestcraft;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockCake;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.FoodStats;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+
+public class BlockPamCake
+extends BlockCake {
+    private int Bites;
+
+    public BlockPamCake(int Bites) {
+        this.func_149675_a(true);
+        this.Bites = Bites;
+    }
+
+    public int Bites(int i) {
+        return i;
+    }
+
+    public void func_149719_a(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_) {
+        int l = p_149719_1_.func_72805_g(p_149719_2_, p_149719_3_, p_149719_4_);
+        float f = 0.0625f;
+        float f1 = (float)(1 + l * 2) / 16.0f;
+        float f2 = 0.5f;
+        this.func_149676_a(f1, 0.0f, f, 1.0f - f, f2, 1.0f - f);
+    }
+
+    public void func_149683_g() {
+        float f = 0.0625f;
+        float f1 = 0.5f;
+        this.func_149676_a(f, 0.0f, f, 1.0f - f, f1, 1.0f - f);
+    }
+
+    public AxisAlignedBB func_149668_a(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_) {
+        int l = p_149668_1_.func_72805_g(p_149668_2_, p_149668_3_, p_149668_4_);
+        float f = 0.0625f;
+        float f1 = (float)(1 + l * 2) / 16.0f;
+        float f2 = 0.5f;
+        return AxisAlignedBB.func_72330_a((double)((float)p_149668_2_ + f1), (double)p_149668_3_, (double)((float)p_149668_4_ + f), (double)((float)(p_149668_2_ + 1) - f), (double)((float)p_149668_3_ + f2 - f), (double)((float)(p_149668_4_ + 1) - f));
+    }
+
+    @SideOnly(value=Side.CLIENT)
+    public AxisAlignedBB func_149633_g(World p_149633_1_, int p_149633_2_, int p_149633_3_, int p_149633_4_) {
+        int l = p_149633_1_.func_72805_g(p_149633_2_, p_149633_3_, p_149633_4_);
+        float f = 0.0625f;
+        float f1 = (float)(1 + l * 2) / 16.0f;
+        float f2 = 0.5f;
+        return AxisAlignedBB.func_72330_a((double)((float)p_149633_2_ + f1), (double)p_149633_3_, (double)((float)p_149633_4_ + f), (double)((float)(p_149633_2_ + 1) - f), (double)((float)p_149633_3_ + f2), (double)((float)(p_149633_4_ + 1) - f));
+    }
+
+    public boolean func_149727_a(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+        this.func_150036_b(p_149727_1_, p_149727_2_, p_149727_3_, p_149727_4_, p_149727_5_);
+        return true;
+    }
+
+    public void func_149699_a(World p_149699_1_, int p_149699_2_, int p_149699_3_, int p_149699_4_, EntityPlayer p_149699_5_) {
+        this.func_150036_b(p_149699_1_, p_149699_2_, p_149699_3_, p_149699_4_, p_149699_5_);
+    }
+
+    private void func_150036_b(World p_150036_1_, int p_150036_2_, int p_150036_3_, int p_150036_4_, EntityPlayer p_150036_5_) {
+        if (p_150036_5_.func_71043_e(false)) {
+            p_150036_5_.func_71024_bL().func_75122_a(2, 0.1f);
+            int l = p_150036_1_.func_72805_g(p_150036_2_, p_150036_3_, p_150036_4_) + 1;
+            if (l >= this.Bites) {
+                p_150036_1_.func_147468_f(p_150036_2_, p_150036_3_, p_150036_4_);
+            } else {
+                p_150036_1_.func_72921_c(p_150036_2_, p_150036_3_, p_150036_4_, l, 2);
+            }
+        }
+    }
+}
+

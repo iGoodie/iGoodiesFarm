@@ -1,0 +1,21 @@
+package igoodie.goodiesfarm.tabs;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+
+public class GoodiesFarmTab extends CreativeTabs
+{
+
+	public GoodiesFarmTab() 
+	{
+		super(CreativeTabs.getNextID(), "Goodie's Farm Items");
+	}
+
+	@Override
+	public Item getTabIconItem() 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

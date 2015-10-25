@@ -1,0 +1,22 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  net.minecraft.block.Block
+ *  net.minecraft.block.BlockTorch
+ *  net.minecraft.creativetab.CreativeTabs
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.harvestcraft;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockTorch;
+import net.minecraft.creativetab.CreativeTabs;
+
+public class BlockPamCandleDeco
+extends BlockTorch {
+    protected BlockPamCandleDeco() {
+        this.func_149647_a(harvestcraft.tabHarvestCraft);
+    }
+}
+

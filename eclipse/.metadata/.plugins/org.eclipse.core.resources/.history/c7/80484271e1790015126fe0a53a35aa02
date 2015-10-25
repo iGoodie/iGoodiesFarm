@@ -1,0 +1,105 @@
+package igoodie.igoodiesfarm.client.renderers;
+
+import igoodie.igoodiesfarm.client.models.ModelBush;
+import igoodie.igoodiesfarm.entities.TileEntityBlackberryBush;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.IItemRenderer.ItemRenderType;
+import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
+
+import org.lwjgl.opengl.GL11;
+
+public class RenderBush extends TileEntitySpecialRenderer implements IItemRenderer
+{
+
+	private static final ResourceLocation texture0 = new ResourceLocation("textures/model/ModelBush_0.png");
+	private static final ResourceLocation texture1 = new ResourceLocation("textures/model/ModelBush_1.png");
+	private static final ResourceLocation texture2 = new ResourceLocation("textures/model/ModelBush_2.png");
+	private static final ResourceLocation texture3 = new ResourceLocation("textures/model/ModelBush_3.png");
+	private static final ResourceLocation texture4 = new ResourceLocation("textures/model/ModelBush_4.png");
+	private static final ResourceLocation texture5 = new ResourceLocation("textures/model/ModelBush_5.png");
+	private static final ResourceLocation texture6 = new ResourceLocation("textures/model/ModelBush_6.png");
+	private static final ResourceLocation texture7 = new ResourceLocation("textures/model/ModelBush_7.png");
+	
+	private ModelBush model;
+	
+	public RenderBush()
+	{
+		this.model = new ModelBush();
+	}
+	
+	private void renderInInventory(TileEntity entity)
+	{
+		GL11.glPushMatrix();
+
+		GL11.glTranslatef((float)x+0.5f, (float)y+1.5f, (float)z+0.5f);
+		GL11.glRotatef(180, 0F, 0F, 1F);
+		
+		bindTexture(texture2);
+
+		GL11.glPushMatrix();
+		this.model.renderModel(0.0625f, 2);
+		GL11.glPopMatrix();
+
+		GL11.glPopMatrix();
+	}
+	
+	@Override
+	public void renderTileEntityAt(TileEntity tileEntity, double x, double y, double z, float f) 
+	{
+		GL11.glPushMatrix();
+
+		GL11.glTranslatef((float)x+0.5f, (float)y+1.5f, (float)z+0.5f);
+		GL11.glRotatef(180, 0F, 0F, 1F);
+
+		int meta = tileEntity.getWorldObj().getBlockMetadata(tileEntity.xCoord, tileEntity.yCoord, tileEntity.zCoord);
+		switch(meta)
+		{
+		case 0: this.bindTexture(texture0); break;
+		case 1: this.bindTexture(texture1); break;
+		case 2: this.bindTexture(texture2); break;
+		case 3: this.bindTexture(texture3); break;
+		case 4: this.bindTexture(texture4); break;
+		case 5: this.bindTexture(texture5); break;
+		case 6: this.bindTexture(texture6); break;
+		case 7: this.bindTexture(texture7); break;
+		default: this.bindTexture(texture0); break;
+		}
+		
+		
+
+		GL11.glPushMatrix();
+		this.model.renderModel(0.0625f, 0);
+		GL11.glPopMatrix();
+
+		GL11.glPopMatrix();
+	}
+	
+	TileEntitySpecialRenderer render = new RenderBush();
+	private TileEntity entity = new TileEntityBlackberryBush();
+
+	@Override
+	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+		return true;
+	}
+
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
+		return true;
+	}
+
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack itemStack, Object... data) 
+	{
+		if(type == IItemRenderer.ItemRenderType.ENTITY)
+			GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
+		this.render.renderTileEntityAt(this.entity, 0.0D, 0.0D, 0.0D, 0.0F);
+	}
+}

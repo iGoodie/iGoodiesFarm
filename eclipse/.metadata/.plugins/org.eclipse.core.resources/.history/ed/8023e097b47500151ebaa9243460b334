@@ -1,0 +1,9 @@
+package igoodie.goodiesfarm.proxy;
+
+public class ServerProxy 
+{
+	public static void init()
+	{
+		
+	}
+}

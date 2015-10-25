@@ -1,0 +1,8 @@
+package igoodie.goodiesfarm;
+
+public class References 
+{
+	public static final String MOD_ID = "";
+	public static final String MOD_NAME = "";
+	public static final String MOD_VERSION = "";
+}

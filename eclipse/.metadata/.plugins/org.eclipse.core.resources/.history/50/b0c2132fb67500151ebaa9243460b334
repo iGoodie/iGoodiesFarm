@@ -1,0 +1,39 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  cpw.mods.fml.client.FMLClientHandler
+ *  cpw.mods.fml.common.event.FMLPreInitializationEvent
+ *  cpw.mods.fml.common.eventhandler.EventBus
+ *  net.minecraft.client.Minecraft
+ *  net.minecraft.client.multiplayer.WorldClient
+ *  net.minecraft.world.World
+ *  net.minecraftforge.common.MinecraftForge
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.CommonProxy;
+import com.pam.harvestcraft.EventHandler;
+import com.pam.harvestcraft.TileEntityHandler;
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.EventBus;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+
+public class ClientProxy
+extends CommonProxy {
+    @Override
+    public void registerRenderInformation(FMLPreInitializationEvent event) {
+        TileEntityHandler.registerTileEntityRenderers();
+        MinecraftForge.EVENT_BUS.register((Object)new EventHandler());
+    }
+
+    @Override
+    public World getClientWorld() {
+        return FMLClientHandler.instance().getClient().field_71441_e;
+    }
+}
+

@@ -1,0 +1,98 @@
+/*
+ * Decompiled with CFR 0_102.
+ * 
+ * Could not load the following classes:
+ *  net.minecraft.entity.projectile.EntityFishHook
+ *  net.minecraft.item.Item
+ *  net.minecraft.item.ItemStack
+ *  net.minecraft.util.WeightedRandomFishable
+ */
+package com.pam.harvestcraft;
+
+import com.pam.harvestcraft.ItemRegistry;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import net.minecraft.entity.projectile.EntityFishHook;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomFishable;
+
+public class FishRegistry {
+    public static void registerItems() {
+        if (ItemRegistry.enableharvestcraftfish) {
+            FishRegistry.registerLoot(new ItemStack(ItemRegistry.seaweedItem, 1, 0), 10);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.anchovyrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.bassrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.carprawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.catfishrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.charrrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.eelrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.grouperrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.herringrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.jellyfishrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.mudfishrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.octopusrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.perchrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.snapperrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.tilapiarawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.troutrawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.tunarawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.walleyerawItem, 1, 0), 25);
+            FishRegistry.registerNormal(new ItemStack(ItemRegistry.greenheartfishItem, 1, 0), 25);
+        }
+    }
+
+    public static void registerNormal(ItemStack item, int weight) {
+        try {
+            Field field = EntityFishHook.class.getDeclaredField("field_146036_f");
+            ArrayList<WeightedRandomFishable> list = new ArrayList<WeightedRandomFishable>(FishRegistry.getStaticFinalList(field));
+            list.add(new WeightedRandomFishable(item, weight));
+            FishRegistry.setStaticFinalList(EntityFishHook.class.getDeclaredField("field_146036_f"), list);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void registerLoot(ItemStack loot, int weight) {
+        try {
+            Field field = EntityFishHook.class.getDeclaredField("field_146039_d");
+            ArrayList<WeightedRandomFishable> list = new ArrayList<WeightedRandomFishable>(FishRegistry.getStaticFinalList(field));
+            list.add(new WeightedRandomFishable(loot, weight));
+            FishRegistry.setStaticFinalList(EntityFishHook.class.getDeclaredField("field_146039_d"), list);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void registerRare(ItemStack rare, int weight) {
+        try {
+            Field field = EntityFishHook.class.getDeclaredField("field_146041_e");
+            ArrayList<WeightedRandomFishable> list = new ArrayList<WeightedRandomFishable>(FishRegistry.getStaticFinalList(field));
+            list.add(new WeightedRandomFishable(rare, weight));
+            FishRegistry.setStaticFinalList(EntityFishHook.class.getDeclaredField("field_146041_e"), list);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static List getStaticFinalList(Field field) throws Exception {
+        field.setAccessible(true);
+        Field modifiers = Field.class.getDeclaredField("modifiers");
+        modifiers.setAccessible(true);
+        modifiers.setInt(field, field.getModifiers() & -17);
+        return (List)field.get(field);
+    }
+
+    private static void setStaticFinalList(Field field, Object object) throws Exception {
+        field.setAccessible(true);
+        Field modifiers = Field.class.getDeclaredField("modifiers");
+        modifiers.setAccessible(true);
+        modifiers.setInt(field, field.getModifiers() & -17);
+        field.set(null, object);
+    }
+}
+
