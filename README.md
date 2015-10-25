@@ -2,6 +2,10 @@
 A mod created for Redowar's modpack. Created for a necessity.
 Currently doesn't add too many features. But I'll be working on it.
 
+| Current Version | GitHub Version |
+| --------------- | -------------- |
+| iGF 0.0.1a | iGF 0.0.1.1a |
+
 ## Table of Concept
 * [[Current Features]] (https://github.com/iGoodie/iGoodiesFarm/#current-features-poop)
 * [[Goals]] (https://github.com/iGoodie/iGoodiesFarm/#goals)
