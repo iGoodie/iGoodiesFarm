@@ -1,8 +1,8 @@
 # iGoodiesFarm - v0.0.0
 To be edited..
 ## Table of Concept
-* [Current Features] (https://github.com/iGoodie/iGoodiesFarm/#Current_Features_:poop:)
-* [Goals] 
+* [[Current Features]] (https://github.com/iGoodie/iGoodiesFarm/#current-features-poop)
+* [[Goals]] (https://github.com/iGoodie/iGoodiesFarm/#goals)
 
 ## Current Features :poop:
 
