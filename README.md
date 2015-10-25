@@ -1,5 +1,7 @@
 # iGoodiesFarm - v0.0.0
-To be edited..
+A mod created for Redowar's modpack. Created for a necessity.
+Currently doesn't add too many features. But I'll be working on it.
+
 ## Table of Concept
 * [[Current Features]] (https://github.com/iGoodie/iGoodiesFarm/#current-features-poop)
 * [[Goals]] (https://github.com/iGoodie/iGoodiesFarm/#goals)
