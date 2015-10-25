@@ -1,9 +1,0 @@
-package igoodie.goodiesfarm.items;
-
-import net.minecraft.item.Item;
-import net.minecraftforge.common.IPlantable;
-
-public class ItemTomatoSeed extends Item implements IPlantable
-{
-	
-}

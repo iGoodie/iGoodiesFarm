@@ -1,8 +1,0 @@
-package igoodie.goodiesfarm.items;
-
-import net.minecraft.item.ItemFood;
-
-public class ItemHungerizer extends ItemFood
-{
-
-}

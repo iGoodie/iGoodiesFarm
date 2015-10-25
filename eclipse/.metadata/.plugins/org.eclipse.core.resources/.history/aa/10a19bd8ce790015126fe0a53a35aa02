@@ -1,8 +1,0 @@
-package igoodie.igoodiesfarm.client.renderersinventory;
-
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-
-public class RenderInvBush implements ISimpleBlockRenderingHandler
-{
-
-}

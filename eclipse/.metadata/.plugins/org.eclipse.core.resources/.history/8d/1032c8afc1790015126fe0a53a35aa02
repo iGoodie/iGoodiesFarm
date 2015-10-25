@@ -1,7 +1,0 @@
-package igoodie.igoodiesfarm.entities;
-
-import net.minecraft.tileentity.TileEntity;
-
-public class TileEntityPole extends TileEntity {
-
-}

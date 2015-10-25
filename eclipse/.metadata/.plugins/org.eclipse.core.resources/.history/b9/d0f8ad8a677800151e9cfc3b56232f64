@@ -1,6 +1,0 @@
-package igoodie.igoodiesfarm.items.type;
-
-public class GoodiesFarmItemFood extends Item
-{
-
-}

@@ -1,8 +1,0 @@
-package igoodie.igoodiesfarm.blocks;
-
-import net.minecraft.block.BlockContainer;
-
-public class BlockPole extends BlockContainer
-{
-
-}

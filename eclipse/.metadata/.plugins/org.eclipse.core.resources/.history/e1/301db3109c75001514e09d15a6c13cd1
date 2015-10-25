@@ -1,9 +1,0 @@
-package igoodie.goodiesfarm.items;
-
-public class GoodiesFarmItems 
-{
-	public static void init()
-	{
-		
-	}
-}

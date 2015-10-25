@@ -1,8 +1,0 @@
-package igoodie.igoodiesfarm.blocks;
-
-import net.minecraft.block.BlockCrops;
-
-public class BlockTypeGrowable extends BlockCrops implements ITileEntityProvider
-{
-
-}

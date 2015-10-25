@@ -1,8 +1,0 @@
-package igoodie.igoodiesfarm.client.renderers;
-
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-
-public class RenderCrop extends TileEntitySpecialRenderer
-{
-
-}

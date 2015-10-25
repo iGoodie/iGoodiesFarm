@@ -1,8 +1,0 @@
-package igoodie.goodiesfarm.tabs;
-
-import net.minecraft.creativetab.CreativeTabs;
-
-public class GoodiesFarmTab extends CreativeTabs
-{
-
-}

@@ -1,8 +1,0 @@
-package igoodie.goodiesfarm.blocks;
-
-import net.minecraft.block.BlockCrops;
-
-public class BlockTurnipCrop extends BlockCrops
-{
-
-}
