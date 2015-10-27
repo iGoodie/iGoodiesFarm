@@ -33,6 +33,7 @@ public class GenBushes implements IWorldGenerator
 			int x = chunkX*16 + random.nextInt(chunkSize);
 			int z = chunkZ*16 + random.nextInt(chunkSize);
 			Block[] bushes = {GoodiesFarmBlocks.blockBlackberryBush, GoodiesFarmBlocks.blockBlueberryBush, GoodiesFarmBlocks.blockRaspberryBush};
+			Block bush = bushes[random.nextInt(3)];
 
 			switch(node)
 			{
@@ -43,7 +44,7 @@ public class GenBushes implements IWorldGenerator
 					if(findGround(world, coords1[i][0], coords1[i][1]) != -1)
 					{
 						int metaRand = random.nextInt(7);
-						world.setBlock(coords1[i][0], findGround(world, coords1[i][0], coords1[i][1]),  coords1[i][1], bushes[random.nextInt(3)]);
+						world.setBlock(coords1[i][0], findGround(world, coords1[i][0], coords1[i][1]),  coords1[i][1], bush);
 						world.setBlockMetadataWithNotify(coords1[i][0], findGround(world, coords1[i][0], coords1[i][1]), coords1[i][1], metaRand, 2);
 					}
 				}
@@ -55,10 +56,11 @@ public class GenBushes implements IWorldGenerator
 					if(findGround(world, coords2[i][0], coords2[i][1]) != -1)
 					{
 						int metaRand = random.nextInt(7);
-						world.setBlock(coords2[i][0], findGround(world, coords2[i][0], coords2[i][1]),  coords2[i][1], bushes[random.nextInt(3)]);
+						world.setBlock(coords2[i][0], findGround(world, coords2[i][0], coords2[i][1]),  coords2[i][1], bush);
 						world.setBlockMetadataWithNotify(coords2[i][0], findGround(world, coords2[i][0], coords2[i][1]), coords2[i][1], metaRand, 2);
 					}
 				}
+				break;
 			}
 
 		}
@@ -72,6 +74,7 @@ public class GenBushes implements IWorldGenerator
 			if(world.getBlock(x, i, z) == Blocks.grass)
 			{
 				returnY = i+1;
+				break;
 			}
 		}
 		return returnY;
