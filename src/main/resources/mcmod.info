@@ -1,9 +1,9 @@
 [
 {
-  "modid": "goof",
+  "modid": "igoodiesfarm",
   "name": "iGoodie's Farm",
-  "description": "This mod is created for Redowar's modpack. Currently, it makes sheep drop meat. It will be developed soon.",
-  "version": "0.0.1",
+  "description": "This mod is created for Redowar's modpack. Created for necessity",
+  "version": "0.0.2a",
   "mcversion": "1.7.10",
   "url": "--",
   "updateUrl": "",

@@ -17,13 +17,9 @@ public class ServerProxy
 		MinecraftForge.EVENT_BUS.register(new GoodiesFarmHoeHandler());
 	}
 	
-	public void registerRenderThings()
-	{
-
-	}
+	public void registerRenderThings() {}
 	
-	public void registerTileEntitySpecialRenderer()
-	{
-		
-	}
+	public void registerTileEntitySpecialRenderer() {}
+	
+	public void initClientHandlers() {}
 }

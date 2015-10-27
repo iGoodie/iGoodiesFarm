@@ -9,9 +9,6 @@ public class GoodiesFarmHoeHandler
 	@SubscribeEvent
 	public void onHoeRightClick(UseHoeEvent event)
 	{
-		int x = event.x;
-		int y = event.y;
-		int z = event.z;
-		event.world.setBlock(x, y, z, Blocks.farmland);
+		
 	}
 }

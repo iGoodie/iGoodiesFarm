@@ -55,17 +55,13 @@ public class GoodiesFarmMod
 		GoodiesFarmBlocks.init();
 		proxy.registerRenderThings();
 		
-		GameRegistry.registerWorldGenerator(new GenBushes(), 1);
+		GameRegistry.registerWorldGenerator(new GenBushes(), 1000);
 		//NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GoodiesFarmGuiHandler());
 	}
 
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event)
 	{
-		if(GoodiesFarmConfig.isCustomHUDEnabled)
-		{
-			MinecraftForge.EVENT_BUS.register(new GuiHealthBar(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiSaturationBar(Minecraft.getMinecraft()));			
-		}
+		proxy.initClientHandlers();
 	}
 }

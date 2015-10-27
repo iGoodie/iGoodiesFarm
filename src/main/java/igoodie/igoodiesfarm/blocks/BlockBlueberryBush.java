@@ -36,7 +36,7 @@ public class BlockBlueberryBush extends Block implements ITileEntityProvider, IG
 		this.setTickRandomly(true);
 		this.setBlockName("blockBlueberryBush");
 	}
-	
+
 	//Grows bush between metadata values 0-6; Grows berry at metadata value 7.
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random)
@@ -52,7 +52,7 @@ public class BlockBlueberryBush extends Block implements ITileEntityProvider, IG
 		if(light>=8)
 		{
 			int meta = world.getBlockMetadata(x, y, z);
-			
+
 			if(meta < 7)
 			{
 				if(random.nextInt(3) == 0)
@@ -73,69 +73,69 @@ public class BlockBlueberryBush extends Block implements ITileEntityProvider, IG
 			}
 		}
 	}
-	
+
 	// Following 3 methods: Hit box and borders -> Special thanks to my lovely friend Ilke, for these calculations. :3
 	@Override
-    public AxisAlignedBB getCollisionBoundingBoxFromPool (World world, int x, int y, int z)
-    {
+	public AxisAlignedBB getCollisionBoundingBoxFromPool (World world, int x, int y, int z)
+	{
 		int meta = world.getBlockMetadata(x, y, z);
-        int cubeSideLengthPixels = 2*meta + 4;
+		int cubeSideLengthPixels = 2*meta + 4;
 		float pixelMeterSize = (1f/16f);
 		double cubeSideLength = (double) (cubeSideLengthPixels * pixelMeterSize);
-		
-		if(meta == 7)
-			cubeSideLength = 1d;
-		
-		return AxisAlignedBB.getBoundingBox(
-				x + (1d-cubeSideLength)/2d,
-				y + 0d,
-				z + (1d-cubeSideLength)/2d,
-				
-				x + (1d+cubeSideLength)/2d,
-				y + cubeSideLength,
-				z + (1d+cubeSideLength)/2d);
-    }
 
-    @Override
-    public AxisAlignedBB getSelectedBoundingBoxFromPool (World world, int x, int y, int z)
-    {
-    	int meta = world.getBlockMetadata(x, y, z);
-        int cubeSideLengthPixels = 2*meta + 4;
-		float pixelMeterSize = (1f/16f);
-		double cubeSideLength = (double) (cubeSideLengthPixels * pixelMeterSize);
-		
 		if(meta == 7)
 			cubeSideLength = 1d;
-		
+
 		return AxisAlignedBB.getBoundingBox(
 				x + (1d-cubeSideLength)/2d,
 				y + 0d,
 				z + (1d-cubeSideLength)/2d,
-				
+
 				x + (1d+cubeSideLength)/2d,
 				y + cubeSideLength,
 				z + (1d+cubeSideLength)/2d);
-    }
+	}
 
 	@Override
-    public void setBlockBoundsBasedOnState (IBlockAccess iblockaccess, int x, int y, int z)
-    {
+	public AxisAlignedBB getSelectedBoundingBoxFromPool (World world, int x, int y, int z)
+	{
+		int meta = world.getBlockMetadata(x, y, z);
+		int cubeSideLengthPixels = 2*meta + 4;
+		float pixelMeterSize = (1f/16f);
+		double cubeSideLength = (double) (cubeSideLengthPixels * pixelMeterSize);
+
+		if(meta == 7)
+			cubeSideLength = 1d;
+
+		return AxisAlignedBB.getBoundingBox(
+				x + (1d-cubeSideLength)/2d,
+				y + 0d,
+				z + (1d-cubeSideLength)/2d,
+
+				x + (1d+cubeSideLength)/2d,
+				y + cubeSideLength,
+				z + (1d+cubeSideLength)/2d);
+	}
+
+	@Override
+	public void setBlockBoundsBasedOnState (IBlockAccess iblockaccess, int x, int y, int z)
+	{
 		int meta = iblockaccess.getBlockMetadata(x, y, z);
 		int cubeSideLengthPixels = 2*meta + 4;
 		float pixelMeterSize = (1f/16f);
 		float cubeSideLength = cubeSideLengthPixels * pixelMeterSize;
-		
+
 		if(meta==7)
 			cubeSideLength = 1f;
 		this.setBlockBounds(
-					(1f - cubeSideLength)/2f,
-					0f,
-					(1f - cubeSideLength)/2f,
+				(1f - cubeSideLength)/2f,
+				0f,
+				(1f - cubeSideLength)/2f,
 
-					(1f + cubeSideLength)/2f,
-					cubeSideLength,
-					(1f + cubeSideLength)/2f);
-    }
+				(1f + cubeSideLength)/2f,
+				cubeSideLength,
+				(1f + cubeSideLength)/2f);
+	}
 
 	//Drops when the block below is broken.
 	@Override
@@ -185,7 +185,7 @@ public class BlockBlueberryBush extends Block implements ITileEntityProvider, IG
 				|| world.getBlock(x, y-1, z) instanceof BlockDirt
 				|| world.getBlock(x, y-1, z) instanceof BlockBlueberryBush;
 	}
-	
+
 	// Following 3 methods make this block flammable.
 	@Override
 	public boolean isFlammable(IBlockAccess world, int x, int y, int z, ForgeDirection face)
@@ -232,14 +232,14 @@ public class BlockBlueberryBush extends Block implements ITileEntityProvider, IG
 	{
 		this.blockIcon = iconRegister.registerIcon("ModelBush_par");
 	}
-	
+
 	// For particles.
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random random) 
 	{
 		//world.spawnParticle("smoke", x, y+0.5d, z, 0.0d, 0.0d, 0.0d);
 	}
-	
+
 	// Following 3 methods are about the functionality of item "Bone"
 	@Override
 	public boolean func_149851_a(World world, int x, int y, int z, boolean isRemote)

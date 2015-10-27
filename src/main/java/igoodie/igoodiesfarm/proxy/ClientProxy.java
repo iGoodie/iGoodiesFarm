@@ -1,6 +1,9 @@
 package igoodie.igoodiesfarm.proxy;
 
+import igoodie.igoodiesfarm.GoodiesFarmConfig;
 import igoodie.igoodiesfarm.blocks.GoodiesFarmBlocks;
+import igoodie.igoodiesfarm.client.gui.GuiHealthBar;
+import igoodie.igoodiesfarm.client.gui.GuiSaturationBar;
 import igoodie.igoodiesfarm.client.renderers.RenderBlackberryBush;
 import igoodie.igoodiesfarm.client.renderers.RenderBlueberryBush;
 import igoodie.igoodiesfarm.client.renderers.RenderRaspberryBush;
@@ -8,9 +11,11 @@ import igoodie.igoodiesfarm.client.renderersinventory.RenderInventoryBush;
 import igoodie.igoodiesfarm.entities.TileEntityBlackberryBush;
 import igoodie.igoodiesfarm.entities.TileEntityBlueberryBush;
 import igoodie.igoodiesfarm.entities.TileEntityRaspberryBush;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
 //@SideOnly(Side.CLIENT)
@@ -43,5 +48,14 @@ public class ClientProxy extends ServerProxy
 	public void registerTileEntitySpecialRenderer()
 	{
 
+	}
+	
+	public void initClientHandlers()
+	{
+		if(GoodiesFarmConfig.isCustomHUDEnabled)
+		{
+			MinecraftForge.EVENT_BUS.register(new GuiHealthBar(Minecraft.getMinecraft()));
+			MinecraftForge.EVENT_BUS.register(new GuiSaturationBar(Minecraft.getMinecraft()));			
+		}
 	}
 }

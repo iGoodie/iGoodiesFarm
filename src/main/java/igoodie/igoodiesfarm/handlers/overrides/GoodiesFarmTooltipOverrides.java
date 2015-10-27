@@ -62,11 +62,11 @@ public class GoodiesFarmTooltipOverrides
 		{
 			int damageTook = event.itemStack.getItemDamage();
 			int damageMax = event.itemStack.getMaxDamage();
-			int curDuration = damageMax - damageTook;
+			int curDurability = damageMax - damageTook;
 
 			event.toolTip.add(
 					event.toolTip.size(),
-					EnumChatFormatting.DARK_GRAY + "Duration: "+curDuration+"/"+damageMax);
+					EnumChatFormatting.DARK_GRAY + "Durability: "+curDurability+"/"+damageMax);
 		}
 	}
 }

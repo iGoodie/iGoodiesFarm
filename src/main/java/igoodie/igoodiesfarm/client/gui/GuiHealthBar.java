@@ -48,7 +48,7 @@ private Minecraft mc;
 					(width-posX)/2, 
 					height-49, 
 					0,
-					16716563);//13373199); //10724259
+					16716563);
 		}
 		else
 		{

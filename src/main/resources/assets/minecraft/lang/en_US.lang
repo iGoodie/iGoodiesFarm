@@ -5,5 +5,7 @@ item.itemBlackberry.name=Blackberry
 item.itemRaspberry.name=Raspberry
 
 tile.blockBlackberryBush.name=Blackberry Bush
+tile.blockBlueberryBush.name=Blueberry Bush
+tile.blockRaspberryBush.name=Raspberry Bush
 
 itemGroup.igoodiesfarm=iGoodie's Farm Foods

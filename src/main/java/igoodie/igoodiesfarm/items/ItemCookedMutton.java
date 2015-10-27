@@ -17,7 +17,7 @@ public class ItemCookedMutton extends ItemFood
 {
 	public ItemCookedMutton()
 	{
-		super(6, 5.0f, true);
+		super(6, 1f, true);
 		this.setCreativeTab(GoodiesFarmTab.instance);
 		this.setMaxStackSize(64);
 		this.setUnlocalizedName("itemCookedMutton");
