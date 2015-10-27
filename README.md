@@ -2,6 +2,8 @@
 A mod created for Redowar's modpack. Created for a necessity.
 Currently doesn't add too many features. But I'll be working on it.
 
+Curse Forge: [[iGoodie's Farm]](http://minecraft.curseforge.com/projects/igoodies-farm)
+
 | Current Version | GitHub Version |
 | --------------- | -------------- |
 | iGF 0.0.2a | iGF 0.0.2a |
