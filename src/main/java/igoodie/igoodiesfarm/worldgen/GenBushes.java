@@ -1,5 +1,6 @@
 package igoodie.igoodiesfarm.worldgen;
 
+import igoodie.igoodiesfarm.GoodiesFarmConfig;
 import igoodie.igoodiesfarm.blocks.GoodiesFarmBlocks;
 
 import java.util.Random;
@@ -24,7 +25,7 @@ public class GenBushes implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
 	{
-		int perChunk = 9;
+		int perChunk = GoodiesFarmConfig.generateBerryBushesEveryXChunks;
 		
 		if(chunkX%perChunk==0 && chunkZ%perChunk==0 && world.provider.dimensionId==0)
 		{
