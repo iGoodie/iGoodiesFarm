@@ -1,4 +1,4 @@
-# iGoodiesFarm - v0.0.2a
+# iGoodiesFarm - v0.0.2.1a
 A mod created for Redowar's modpack. Created for a necessity.
 Currently doesn't add too many features. But I'll be working on it.
 
@@ -6,7 +6,7 @@ Curse Forge: [[iGoodie's Farm]](http://minecraft.curseforge.com/projects/igoodie
 
 | Current Version | GitHub Version |
 | --------------- | -------------- |
-| iGF 0.0.2a | iGF 0.0.2a |
+| iGF 0.0.2.1a | iGF 0.0.2.1a |
 
 ## Table of Concept
 * [[Current Features]] (https://github.com/iGoodie/iGoodiesFarm/#current-features-poop)
@@ -42,3 +42,7 @@ V: 0.0.2a
 * A new HUD is coded to show the current "Saturation".
 * Mod ID is changed from "goof" to "igoodiesfarm".
 * Config file is added with one boolean value.
+
+V: 0.0.2.1a
+* Berry bushes won't create tile entities from now on. 
+* Config file is re-arranged + added 2 new lines.
