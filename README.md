@@ -9,9 +9,9 @@ Curse Forge: [[iGoodie's Farm]](http://minecraft.curseforge.com/projects/igoodie
 | iGF 0.0.2.1a | iGF 0.0.2.1a |
 
 ## Table of Concept
-* [[Current Features]] (https://github.com/iGoodie/iGoodiesFarm/#current-features-poop)
-* [[Goals]] (https://github.com/iGoodie/iGoodiesFarm/#goals)
-* [[Change-logs]] (https://github.com/iGoodie/iGoodiesFarm/#change-log)
+* [[Current Features]](https://github.com/iGoodie/iGoodiesFarm/#current-features-poop)
+* [[Goals]](https://github.com/iGoodie/iGoodiesFarm/#goals)
+* [[Change-logs]](https://github.com/iGoodie/iGoodiesFarm/#change-log)
 
 ## Current Features :poop:
 
