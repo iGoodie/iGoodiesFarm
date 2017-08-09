@@ -33,7 +33,7 @@ Curse Forge: [[iGoodie's Farm]](http://minecraft.curseforge.com/projects/igoodie
 - [x] Block bush with custom model & textures is created and scripted to grow berries.
 - [x] Berry bushes added into world-gen.
 
-##Change-log
+## Change-log
 V: 0.0.2a
 * Now wolves can eat "Cooked Lamb Meat"
 * Drop chance of "Raw Lamb Meat" & "Cooked Lamb Meat" are improved.
